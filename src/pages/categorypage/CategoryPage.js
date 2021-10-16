@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import "./CategoryPage.css"
+import Products from "./CardProduct"
 
 class CategoryPage extends Component {
+    constructor() {
+        super()
+    }
     render() {
         return (
-            <div>
+            <div className="categoryPage" >
                 <div className="categoryname">Category name</div>
-                <div></div>
+                <div className="cards">
+                    <Products />
+                </div>
             </div>
         );
     }

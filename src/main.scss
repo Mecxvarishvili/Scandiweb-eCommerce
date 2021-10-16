@@ -1,0 +1,218 @@
+body {
+    div {
+        .app {
+            max-width: 1440px;
+            margin: 0 auto;
+
+            .cont {
+                margin: 0 100px;
+
+                header {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 80px;
+                        flex-wrap: wrap;
+                    .categoryCont {
+                        display: flex;
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #1D1F22;
+                        text-transform:uppercase;
+                        height: 78px;
+
+                        .category {
+                            padding: 0 17px;
+                            text-align: center;
+                            line-height: 80px;
+                        }
+                        
+                        .categoryAfter {
+                            font-weight: 600;
+                            line-height: 80px;
+                            color: #5ECE7B;
+                            border-bottom: 2px solid #5ECE7B;
+                        }
+                        
+                    }
+                    .logoCont {
+                        .logo {
+                            width: 32px;
+                            height: 32px;
+                        }
+                    }
+
+                    .cont1 {
+                        display: flex;
+                    }
+                }
+                .categoryPage {
+                    .categoryname {
+                        font-size: 42px;
+                        margin: 80px 0;
+                        color: #1D1F22;
+                    }
+                    .cards {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        gap: 100px 0;
+
+                        .cardCont {
+                            flex-basis: 380px;
+                            text-decoration: none;
+
+                            a {
+                                img {
+                                    width: 100%;
+                                    height: 330px;
+                                    object-fit: contain;
+                                }
+
+                            }
+
+                            .title {
+                                margin-top: 20px;
+                                font-size: 18px;
+                                font-weight: 300;
+                                color: #1D1F22;
+                            }
+
+                            .price {
+                                margin: 5px 0;
+                                font-size: 18px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 29px;
+                                letter-spacing: 0em;
+                            }
+                        }
+                    }
+
+                }
+
+                .productPage {
+                    margin-top: 78px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .imgsCont {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px 0;
+                        .img {
+                            width: 80px;
+                            height: 80px;
+                            object-fit: contain;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .imgCont {
+                        img {
+                            width: 610px;
+                            height: 511px;
+                            object-fit: contain;
+                            
+                        }
+
+                    }
+
+                    .describeCont {
+                        .title {
+                            font-size: 30px;
+                            font-weight: 600;
+                        }
+
+                        .category {
+                            font-size: 30px;
+                            text-transform: capitalize;
+                        }
+
+                        .sizeCont {
+                            margin: 20px 0;
+
+                            .size {
+                                font-family: 'Poppins Medium', sans-serif;
+                                font-size: 18px;
+                                font-weight: bold;
+                            }
+
+                            div {
+                                display: flex;
+                                justify-content: space-between;
+                                .sizeBox {
+                                    display: flex;
+    
+                                    input {
+                                        display: none;
+                                    }
+    
+                                    input:checked + .label {
+                                        background-color: black;
+                                        color: white
+                                    }
+    
+                                    .label {
+                                        width: 60px;
+                                        height: 45px;
+                                        line-height: 45px;
+                                        text-align: center;
+                                        border: 1px solid #1D1F22;
+                                        box-sizing: border-box;
+                                        cursor: pointer;
+                                        -webkit-touch-callout: none; /* iOS Safari */
+                                          -webkit-user-select: none; /* Safari */
+                                           -khtml-user-select: none; /* Konqueror HTML */
+                                             -moz-user-select: none; /* Old versions of Firefox */
+                                              -ms-user-select: none; /* Internet Explorer/Edge */
+                                                  user-select: none;
+                                    }
+                                }
+
+                            }
+
+                        }
+
+                        .priceCont {
+
+                            .priceTitle {
+                                font-family: 'Poppins Medium', sans-serif;
+                                font-size: 18px;
+                                font-weight: bold;
+                            }
+
+                            .price {
+
+                            }
+
+                        }
+                        button {
+                            width: 100%;
+                            height: 50px;
+                            background: #5ECE7B;
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: white;
+                            border: none;
+                            cursor: pointer;
+                        }
+                    }
+                    
+                }
+
+                footer {
+
+                }
+            }
+        }
+    }
+}
+
+/* .input:checked +  .label {
+    background: blue !important;
+    color: white !important;
+}
+ */
+
