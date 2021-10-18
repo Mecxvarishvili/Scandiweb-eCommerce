@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from "../../images/logo.png"
 import cart from "../../images/Cart.png"
+import { Link } from 'react-router-dom';
+import { CART_PAGE } from '../../serialzie/routes';
 
 class Header extends Component {
     constructor(props) {
@@ -26,7 +28,9 @@ class Header extends Component {
                         </select>
                     </div>
                     <div>
-                        <img className="cart" src={cart} alt="cart" />
+                        <Link to={CART_PAGE}>
+                            <img className="cart" src={cart} alt="cart" />
+                        </Link>
                     </div>
                 </div>
             </header>

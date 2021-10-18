@@ -1,15 +1,15 @@
 import { DELETE_CART, SET_CART } from "./cartActionConst"
 
-export const setCart = () => {
+export const setCart = (data) => {
     return {
         type: SET_CART,
-        paylaod: 0
+        payload: data
     }
 } 
 
-export const DeleteCart = () => {
+export const DeleteCart = (data) => {
     return {
         type: DELETE_CART,
-        payload: 0,
+        payload: data,
     }
 }
