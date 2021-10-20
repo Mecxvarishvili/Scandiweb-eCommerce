@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import { getCartData } from '../../store/cart/cartSelector';
-import store from '../../store/store';
+import { connect } from 'react-redux';
+import { getProductsCurrency } from '../../store/products/productsSelector';
+import CartQuantity from '../../components/CartQuantity';
+import { Link } from 'react-router-dom';
+import { PRODUCT_PAGE } from '../../serialzie/routes';
+
+
+const mapStateToProps = (props) => ({
+    getCartData: getCartData(props),
+    getCurrency: getProductsCurrency(props)
+ });
 
 class CartPage extends Component {
     constructor() {
         super()
 
-        this.state = {
-            data: new store.getState(getCartData)
-        }
     }
 
     render() {
@@ -16,38 +23,50 @@ class CartPage extends Component {
             <div className="cartPage">
                 <div className="title">Cart</div>
                 <div className="productsCont">
-                    {this.state.data.cartProducts.map((el, index) => {
+                    {this.props.getCartData.length
+                    ?
+                    this.props.getCartData.map((el, index) => {
                         return (
                             <>
                                 <div className="line" ></div>
                                 <div key={index} className="productBox" >
                                     <div className="cont1">
-                                        <div className="name" >{el.name}</div>
-                                        <div className="category" >{el.category}</div>
-                                        <div className="price" >{el.prices[0].amount}</div>
                                         <div>
-                                            formap
+                                            <div className="name" >{el.name}</div>
+                                            <div className="category" >{el.category}</div>
+                                            {el.prices.filter((price) =>{return price.currency === this.props.getCurrency}).map((el) =>{
+                                                return (
+                                                    <div className="price">{Math.round(el.amount)} {el.currency}</div>
+
+                                                )
+                                            })}
+                                        </div>
+                                        <div className="cartCategory">
+                                            <div>S</div>
+                                            <div>M</div> {/* not working */}
                                         </div>
                                     </div>
                                     <div className="cont2">
                                         <div className="qtyBox">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
+                                            <CartQuantity />
                                         </div>
                                         <div className="imgBox">
-                                            <img src={el.gallery[0]} />
+                                            <Link to={PRODUCT_PAGE.replace(":id", el.id)} >
+                                                <img src={el.gallery[0]} />
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
                             </>
                         )
-                    })}
-                    
+                    })
+                    :
+                    <div className="emptyCart" >Cart is empty</div>
+                    }
                 </div>
             </div>
         );
     }
 }
 
-export default CartPage;
+export default connect(mapStateToProps)(CartPage);

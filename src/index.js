@@ -20,9 +20,11 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
       <ApolloProvider client={client}>
         <App />
       </ApolloProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

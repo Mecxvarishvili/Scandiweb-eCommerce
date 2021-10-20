@@ -4,25 +4,31 @@ import Loader from '../../components/Loader';
 import { SINGLE_PRODUCT_QUERY } from '../../serialzie/querySerialize';
 import { DeleteCart, setCart } from '../../store/cart/cartActionCreator';
 import { getCartData } from '../../store/cart/cartSelector';
-import store from '../../store/store';
+import { getProductsCurrency } from '../../store/products/productsSelector';
+import { connect } from 'react-redux';
+import CartButton from '../../components/CartButton';
 
+
+const mapStateToProps = (props) => ({
+    currency: getProductsCurrency(props),
+    getCartData: getCartData(props),
+ });
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setCartData: (data) => dispatch(setCart(data)),
+        deleteCartData: (data) => dispatch(DeleteCart(data)),
+    }
+}
 
 class ProductPage extends Component {
     constructor(props) {
         super(props)
         
-        this.store = store
-        this.dispatch = store.dispatch
-        this.selector = store.getState
-        
         this.state = {
             isLoading: true,
             productData: [],
-            pathname: window.location.pathname.substring(1),
             img: 0,
-            cartData: this.store.getState(getCartData).cartProducts,
-            isAdded: !!this.selector(getCartData).cartProducts.find((data) => data.id === window.location.pathname.substring(1)),
-
         }
 
     }
@@ -32,32 +38,11 @@ class ProductPage extends Component {
         fetch('http://localhost:4000/', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({query: SINGLE_PRODUCT_QUERY(this.state.pathname)})
+            body: JSON.stringify({query: SINGLE_PRODUCT_QUERY(this.props.match.params.id)})
         })
             .then(res => res.json())
             .then(data => this.setState({productData: data.data.product}))
-            .then(this.setState({isLoading: false}))
-    }
-
-    /* componentDidUpdate(previousProps, previousState) {
-        if (previousState.cartData !== this.state.cartData) {
-            this.forId = !!this.store.getState(getCartData).cartProducts.find((data) => data.id === this.state.productData.id )
-            console.log(this.forId)
-        }
-    
-    } */
-
-    addToCart() {
-        this.dispatch(setCart(this.state.productData))
-        this.setState({cartData: this.selector(getCartData).cartProducts})
-        this.setState({isAdded: true})
-
-    }
-
-    removeFromCart() {
-        this.dispatch(DeleteCart(this.state.productData))
-        this.setState({cartData: this.selector(getCartData)})
-        this.setState({ isAdded: false})
+            .finally(this.setState({isLoading: false}))
     }
 
 
@@ -65,19 +50,23 @@ class ProductPage extends Component {
             return (
                 <Loader loader={this.state.isLoading}>
                     <div className="productPage" >
-                        <div className="imgsCont">
-                            {this.state.productData.gallery && this.state.productData.gallery.map((el, index) => {
-                                return (
-                                        <img className="img" src={el} onClick={() => this.setState({img: index})} />
-                                )
-                            })}
-                        </div>
                         <div className="imgCont">
-                            <img src={this.state.productData.gallery ? this.state.productData.gallery[this.state.img] : <></>} />
+                            <div className="imgsBox">
+                                {this.state.productData.gallery && this.state.productData.gallery.map((el, index) => {
+                                    return (
+                                            <img className="img" src={el} onClick={() => this.setState({img: index})} />
+                                    )
+                                })}
+                            </div>
+                            <div className="imgBox">
+                                <img src={this.state.productData.gallery ? this.state.productData.gallery[this.state.img] : <></>} />
+                            </div>
                         </div>
                         <div className="describeCont">
-                            <div className="title" >{this.state.productData.name}</div>
-                            <div className="category" >{this.state.productData.category}</div>
+                            <div>
+                                <div className="title" >{this.state.productData.name}</div>
+                                <div className="category" >{this.state.productData.category}</div>
+                            </div>
                                 {this.state.productData.category === "clothes" ?
                                     <div className="sizeCont" >
                                         <div className='size'>{this.state.productData.attributes[0].id}:</div>
@@ -114,15 +103,19 @@ class ProductPage extends Component {
                                 }
                             <div className="priceCont" >
                                 <div className="priceTitle" >PRICE:</div>
-                                <div className="price" >{this.state.productData.prices ? this.state.productData.prices[0].amount  : <></>}</div>
+                                        {this.state.productData.prices && this.state.productData.prices.filter((price) =>{return price.currency === this.props.currency}).map((el) =>{
+                                            return (
+                                                <div className="price">{Math.round(el.amount)} {el.currency}</div>
+
+                                            )
+
+                                        })}
                             </div>
-                            { 
-                            this.state.isAdded ?
-                                <button className="removeButton" onClick={() => this.removeFromCart()}>REMOVE FROM CART</button>
-                                :
-                                <button className="addButton" onClick={() => this.addToCart()}>ADD TO CART</button>
-                            }
-                            <div dangerouslySetInnerHTML={{ __html: this.state.productData.description}}></div>
+                            <CartButton data={this.state.productData} img={false} />
+                            <div>
+                                <div className="productDescribe">describe:</div>
+                                <div dangerouslySetInnerHTML={{ __html: this.state.productData.description}}></div>
+                            </div>
                         </div>
                     </div>
                 </Loader>
@@ -130,4 +123,4 @@ class ProductPage extends Component {
     }   
 }
 
-export default ProductPage ;
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter( ProductPage)) ;

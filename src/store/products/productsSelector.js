@@ -1,0 +1,1 @@
+export const getProductsCurrency = (props) => { return props.productsReducer.currency}

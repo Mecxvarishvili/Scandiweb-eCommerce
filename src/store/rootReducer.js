@@ -1,8 +1,10 @@
 import cartProducts from "./cart/cartReducer"
 import { combineReducers } from "redux"
+import productsReducer from "./products/productsReducer"
 
 const allReducer = combineReducers({
-    cartProducts
+    cartProducts,
+    productsReducer,
 })
 
 const rootReducer = (state, action) => {

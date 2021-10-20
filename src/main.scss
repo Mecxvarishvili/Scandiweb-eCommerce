@@ -1,324 +1,1084 @@
-body {
-    div {
-        .app {
-            max-width: 1440px;
-            margin: 0 auto;
+@media only screen and (max-width: 12000px) {
+    body {
+        div {
+            .app {
+                margin: 0 auto;
 
-            .cont {
-                margin: 0 100px;
+                .cont {
 
-                header {
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: space-between;
-                    height: 80px;
-                        flex-wrap: wrap;
-                    .categoryCont {
-                        display: flex;
-                        font-size: 16px;
-                        font-weight: 400;
-                        color: #1D1F22;
-                        text-transform:uppercase;
-                        height: 78px;
+                    header {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        z-index: 2;
+                        width: 100%;
+                        height: 80px;
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                        background-color: white;
 
-                        .category {
-                            padding: 0 17px;
-                            text-align: center;
-                            line-height: 80px;
-                        }
+                        .inHeader {
+                            background-color: white;
                         
-                        .categoryAfter {
-                            font-weight: 600;
-                            line-height: 80px;
-                            color: #5ECE7B;
-                            border-bottom: 2px solid #5ECE7B;
-                        }
-                        
-                    }
-                    .logoCont {
-                        .logo {
-                            width: 32px;
-                            height: 32px;
-                        }
-                    }
+                            .headerCont{
+                                height: 80px;
+                                margin: auto;
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+                            
+                                .categoryCont {
+                                    grid-column: span 1;
+                                    display: flex;
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                    color: #1D1F22;
+                                    text-transform:uppercase;
+                                    height: 78px;
 
-                    .cont1 {
-                        display: flex;
-                    }
-                }
-                .categoryPage {
-                    .categoryname {
-                        font-size: 42px;
-                        margin: 80px 0;
-                        color: #1D1F22;
-                    }
-                    .cards {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: space-between;
-                        gap: 100px 0;
+                                    a { 
+                                        text-decoration: none;
+                                    
+                                        .category {
+                                            padding: 0 17px;
+                                            text-align: center;
+                                            line-height: 80px;
+                                            color: black;
+                                        }
+                                    
+                                        .categoryAfter {
+                                            padding: 0 17px;
+                                            font-weight: 600;
+                                            line-height: 78px;
+                                            color: #5ECE7B;
+                                            border-bottom: 2px solid #5ECE7B;
+                                        }
+                                    
+                                    }
 
-                        .cardCont {
-                            flex-basis: 380px;
-                            text-decoration: none;
+                                }
+                                .logoCont {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                
+                                    .logo {
+                                        width: 32px;
+                                        height: 32px;
+                                    }
+                                }
+                            
+                                .cont1 {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    align-items: center;
+                                
+                                    .currencyCont {
+                                        margin: 0 10px;
+                                    
+                                        select {
+                                        border: none;
+                                        outline: none;
+                                        cursor: pointer;
+                                        }
+                                    }
+                                
+                                    button {
+                                        border: none;
+                                        background-color: white;
+                                        cursor: pointer;
+                                        position: relative;
+                                        width: 45px;
+                                        height: 45px;
 
-                            a {
-                                img {
+                                        div {
+                                            position: absolute;
+                                            top: 0;
+                                            right: 0;
+                                            width: 20px;
+                                            height: 20px;
+                                            line-height: 20px;
+                                            background-color: black;
+                                            color: white;
+                                            font-size: 14px;
+                                            font-weight: 600;
+                                            border-radius: 50%;
+                                        }
+                                    }
+                                }
+                            
+                                .showCartMenuCont {
+                                    position: fixed;
+                                    z-index: -1;
+                                    top: 0;
+                                    right: 0;
+                                    left: 0;
                                     width: 100%;
-                                    height: 330px;
-                                    object-fit: contain;
+                                    height: 100vh;
+                                    background: rgba(57, 55, 72, 0.22);
+                                    visibility: visible;
+                                    opacity: 1;
+
+                                    .cartCont {
+                                        display: flex;
+                                        justify-content: flex-end;
+
+                                    
+                                        .showCart {
+                                            position: relative;
+                                            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                                            width: 300px;
+                                            max-height: 500px;
+                                            background-color: white;
+                                            padding: 10px 15px;
+
+                                            .bagTitle {
+                                                font-weight: 700;
+
+                                                span {
+                                                font-weight: 500;
+                                                }
+                                            }
+
+                                            .bagCardCont {
+                                                overflow: scroll;
+                                                overflow-x: hidden;
+                                                max-height: 330px;
+                                                display: flex;
+                                                flex-direction: column;
+                                                gap: 30px;
+
+                                                .bagCardBox {
+                                                    margin: 4px 0;
+                                                    display: flex;
+                                                    justify-content: space-between;
+
+                                                    .leftCont {
+                                                        flex-basis: 130px;
+                                                        display: flex;
+                                                        flex-direction: column;
+                                                        justify-content: space-between;
+
+                                                        .bagDescribe {
+
+                                                            .bagName {
+                                                                color: #1D1F22;
+                                                                margin: 5px 0;
+                                                                line-height: 15px;
+
+                                                            }
+
+                                                            .bagCategory {
+                                                                color: #1D1F22;
+                                                                margin: 5px 0;
+                                                                text-transform: capitalize;
+
+                                                            }
+
+                                                            .bagPrice {
+                                                                color: #1D1F22;
+                                                                margin: 10px 0;
+                                                                font-weight: 500;
+                                                            }
+                                                        }
+
+                                                        .bagSizeCont {
+                                                            display: flex;
+                                                            gap: 5px;
+
+                                                            .bagSizeBox {
+                                                                width: 23px;
+                                                                height: 23px;
+                                                                line-height: 23px;
+                                                                border: 1px solid #1D1F22;
+                                                                text-align: center;
+                                                                font-size: 14px;
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                    .rightCont {
+                                                        flex-basis: 140px;
+                                                        display: flex;
+                                                        justify-content: space-between;
+
+                                                        .qtyCont {
+                                                            width: 25px;
+
+                                                        }
+
+                                                        .imgCont {
+                                                            width: 105px;
+                                                            height: 140px;
+                                                            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+                                                            img {
+                                                                width: 105px;
+                                                                height: 140px;
+                                                                object-fit: contain;
+
+                                                            }
+
+                                                        }
+
+                                                    }
+
+                                                }
+                                            }
+
+                                            .emptyBag {
+                                                margin: 40px 0;
+                                                text-align: center;
+                                                font-size: 20px;
+
+                                            }
+
+                                            .totalCont {
+                                                display: flex;
+                                                justify-content: space-between;
+                                                margin: 40px 0;
+
+                                                .total {
+                                                    font-weight: 500;
+                                                }
+
+                                                .totalPrice {
+                                                    font-weight: 500;
+                                                }
+                                            }
+
+                                            .buttonCont {
+                                                display: flex;
+                                                justify-content: space-between;
+
+                                                a {
+
+                                                    .viewBag {
+                                                        width: 140px;
+                                                        height: 40px;
+                                                        border: 1px solid #1D1F22;
+                                                        font-size: 14px;
+                                                        font-weight: 600;
+                                                        text-transform: uppercase;
+                                                        padding: 0;
+                                                        cursor: pointer;
+                                                    }
+                                                }
+
+                                                .checkout {
+                                                    width: 140px;
+                                                    height: 40px;
+                                                    background-color: #5ECE7B;
+                                                    color: white;
+                                                    font-size: 14px;
+                                                    font-weight: 600;
+                                                    border: 1px solid #5ECE7B;
+                                                    text-transform: uppercase;
+                                                    padding: 0;
+
+                                                }
+                                            }
+                                        
+                                        }
+                                    
+                                        .dontShowCart {
+                                            display: none;
+                                        }
+                                    }
+                                
                                 }
-
-                            }
-
-                            .title {
-                                margin-top: 20px;
-                                font-size: 18px;
-                                font-weight: 300;
-                                color: #1D1F22;
-                            }
-
-                            .price {
-                                margin: 5px 0;
-                                font-size: 18px;
-                                font-style: normal;
-                                font-weight: 500;
-                                line-height: 29px;
-                                letter-spacing: 0em;
-                            }
-                        }
-                    }
-
-                }
-
-                .productPage {
-                    margin-top: 78px;
-                    display: flex;
-                    justify-content: space-between;
-
-                    .imgsCont {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 20px 0;
-                        .img {
-                            width: 80px;
-                            height: 80px;
-                            object-fit: contain;
-                            cursor: pointer;
-                        }
-                    }
-
-                    .imgCont {
-                        img {
-                            width: 610px;
-                            height: 511px;
-                            object-fit: contain;
                             
-                        }
-
-                    }
-
-                    .describeCont {
-                        .title {
-                            font-size: 30px;
-                            font-weight: 600;
-                        }
-
-                        .category {
-                            font-size: 30px;
-                            text-transform: capitalize;
-                        }
-
-                        .sizeCont {
-                            margin: 20px 0;
-
-                            .size {
-                                font-family: 'Poppins Medium', sans-serif;
-                                font-size: 18px;
-                                font-weight: bold;
-                                text-transform: uppercase;
-                            }
-
-                            div {
-                                display: flex;
-                                justify-content: space-between;
-                                .sizeBox {
-                                    display: flex;
-    
-                                    input {
-                                        display: none;
-                                    }
-    
-                                    input:checked + .label {
-                                        background-color: black;
-                                        color: white
-                                    }
-    
-                                    .label {
-                                        width: 60px;
-                                        height: 45px;
-                                        line-height: 45px;
-                                        text-align: center;
-                                        border: 1px solid #1D1F22;
-                                        box-sizing: border-box;
-                                        cursor: pointer;
-                                        -webkit-touch-callout: none; 
-                                          -webkit-user-select: none; 
-                                           -khtml-user-select: none; 
-                                             -moz-user-select: none; 
-                                              -ms-user-select: none; 
-                                                  user-select: none;
-                                    }
+                                .dontShowCartMenuCont {
+                                    position: fixed;
+                                    top: 0;
+                                    right: 0;
+                                    width: 100%;
+                                    height: 100vh;
+                                    visibility: hidden;
+                                    opacity: 0;
                                 }
-
                             }
 
                         }
 
-                        .describe {
-                            
-                            .describeTitle {
-                                font-size: 18px;
-                                font-weight: bold;
-                                font-family: 'Poppins Medium', sans-serif;
-                            }
-                            .inDescribeCont {
-                                display: flex;
-                                justify-content: space-between;
-
-                                .inputBox {
-                                    display: flex;
-                                    input {
-                                        display: none;
-                                    }
-        
-                                    input:checked + .label {
-                                        background-color: black;
-                                        color: white
-                                    }
-    
-                                    .label {
-                                        width: 60px;
-                                        height: 45px;
-                                        line-height: 45px;
-                                        text-align: center;
-                                        border: 1px solid #1D1F22;
-                                        box-sizing: border-box;
-                                        cursor: pointer;
-                                        -webkit-touch-callout: none; 
-                                          -webkit-user-select: none; 
-                                           -khtml-user-select: none; 
-                                             -moz-user-select: none; 
-                                              -ms-user-select: none; 
-                                                  user-select: none;
-                                    }
-                                }
-
-                            }
-                        }
-
-                        .priceCont {
-
-                            .priceTitle {
-                                font-family: 'Poppins Medium', sans-serif;
-                                font-size: 18px;
-                                font-weight: bold;
-                            }
-
-                            .price {
-
-                            }
-
-                        }
-                        .addButton {
-                            width: 100%;
-                            height: 50px;
-                            background: #5ECE7B;
-                            font-size: 16px;
-                            font-weight: 600;
-                            color: white;
-                            border: none;
-                            cursor: pointer;
-                        }
-
-                        .removeButton {
-                            width: 100%;
-                            height: 50px;
-                            background: #d13737;
-                            font-size: 16px;
-                            font-weight: 600;
-                            color: white;
-                            border: none;
-                            cursor: pointer;
-                        }
                     }
-                    
-                }
-                .cartPage {
-                    .title {
-                        font-size: 30px;
-                        font-weight: 600;
-                        margin: 70px 0;
-                    }
+                    .categoryPage {
 
-                    .productsCont {
-
-                        .line {
-                            height: 1px;
-                            background: #E5E5E5;
+                        .categoryname {
+                            font-size: 42px;
+                            color: #1D1F22;
+                            text-transform:capitalize;
                         }
-
-                        .productBox {
-                            display: flex;
+                        .cards {
                             justify-content: space-between;
-                            margin: 10px 0;
 
-                            .cont1 {
+                            .cardCont {
+                                position: relative;
+                                text-decoration: none;
+                                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
-                                .name {
-                                    font-size: 30px;
-                                    font-weight: 600;
+                                a {
+                                    img {
+                                        object-fit: contain;
+                                        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+                                    }
+
                                 }
 
-                                .category {
-                                    font-size: 30px;
+                                .title {
+                                    margin-top: 20px;
+                                    font-size: 18px;
+                                    font-weight: 300;
+                                    color: #1D1F22;
                                 }
 
                                 .price {
-                                    font-size: 24px;
-                                    font-weight: 700;
+                                    margin: 5px 0;
+                                    font-size: 18px;
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    line-height: 29px;
+                                    letter-spacing: 0em;
+                                }
+
+                                .addButton {
+                                    position: absolute;
+                                    background: #5ECE7B;
+                                    border: none;
+                                    border-radius: 50%;
+                                    width: 50px;
+                                    height: 50px;
+                                    cursor: pointer;
+
+                                }
+
+                                .removeButton {
+                                    position: absolute;
+                                    background: #e92200;
+                                    border: none;
+                                    border-radius: 50%;
+                                    width: 50px;
+                                    height: 50px;
+                                    cursor: pointer;
+
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    .productPage {
+                        display: flex;
+
+                        .imgCont {
+                            display: flex;
+                            justify-content: space-between;
+
+                            .imgsBox {
+                                display: flex;
+                                gap: 20px 0;
+                                width: 80px;
+
+                                .img {
+                                    width: 80px;
+                                    height: 80px;
+                                    object-fit: contain;
+                                    cursor: pointer;
+                                }
+                            }
+                        
+                            .imgBox {
+
+                                img {
+                                    object-fit: contain;
+                                    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+                                }
+                            
+                            }
+                        }
+
+                        .describeCont {
+                            width: 300px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 30px 0;
+
+                            .title {
+                                font-size: 30px;
+                                font-weight: 600;
+                            }
+
+                            .category {
+                                font-size: 30px;
+                                text-transform: capitalize;
+                            }
+
+                            .sizeCont {
+
+                                .size {
+                                    font-family: 'Poppins Medium', sans-serif;
+                                    font-size: 18px;
+                                    font-weight: bold;
+                                    text-transform: uppercase;
+                                }
+
+                                div {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    .sizeBox {
+                                        display: flex;
+                                    
+                                        input {
+                                            display: none;
+                                        }
+                                    
+                                        input:checked + .label {
+                                            background-color: black;
+                                            color: white
+                                        }
+                                    
+                                        .label {
+                                            width: 60px;
+                                            height: 45px;
+                                            line-height: 45px;
+                                            text-align: center;
+                                            border: 1px solid #1D1F22;
+                                            box-sizing: border-box;
+                                            cursor: pointer;
+                                            -webkit-touch-callout: none; 
+                                              -webkit-user-select: none; 
+                                               -khtml-user-select: none; 
+                                                 -moz-user-select: none; 
+                                                  -ms-user-select: none; 
+                                                      user-select: none;
+                                        }
+                                    }
+
                                 }
 
                             }
 
-                            .cont2 {
-                                .qtyBox {
+                            .describe {
+
+                                .describeTitle {
+                                    font-size: 18px;
+                                    font-weight: bold;
+                                    font-family: 'Poppins Medium', sans-serif;
+                                }
+                                .inDescribeCont {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: 10px;
+
+                                    .inputBox {
+                                        display: flex;
+                                        input {
+                                            display: none;
+                                        }
+                                    
+                                        input:checked + .label {
+                                            background-color: black;
+                                            color: white
+                                        }
+                                    
+                                        .label {
+                                            width: 60px;
+                                            height: 45px;
+                                            line-height: 45px;
+                                            text-align: center;
+                                            border: 1px solid #1D1F22;
+                                            box-sizing: border-box;
+                                            cursor: pointer;
+                                            -webkit-touch-callout: none; 
+                                              -webkit-user-select: none; 
+                                               -khtml-user-select: none; 
+                                                 -moz-user-select: none; 
+                                                  -ms-user-select: none; 
+                                                      user-select: none;
+                                        }
+                                    }
+
+                                }
+                            }
+
+                            .priceCont {
+
+                                .priceTitle {
+                                    font-family: 'Poppins Medium', sans-serif;
+                                    font-size: 18px;
+                                    font-weight: bold;
+                                }
+
+                                .price {
+                                    font-weight: 600;
+                                    font-size: 24px;
+                                    margin-top: 10px;
 
                                 }
 
-                                .imgBox {
-                                    width: 140px;
-                                    height: 185px;
+                            }
+                            .addButton {
+                                width: 100%;
+                                height: 50px;
+                                background: #5ECE7B;
+                                font-size: 16px;
+                                font-weight: 600;
+                                color: white;
+                                border: none;
+                                cursor: pointer;
+                            }
 
-                                    img {
-                                        object-fit: contain;
+                            .removeButton {
+                                width: 100%;
+                                height: 50px;
+                                background: #e92200;
+                                font-size: 16px;
+                                font-weight: 600;
+                                color: white;
+                                border: none;
+                                cursor: pointer;
+                            }
+                            .productDescribe {
+                                font-size: 24px;
+                                font-weight: 600;
+                                text-transform: capitalize;
+                            }
+                        }
+
+                    }
+                    .cartPage {
+                        margin-top: 160px;
+                        .title {
+                            font-size: 30px;
+                            font-weight: 600;
+                            margin: 60px 0;
+                            text-transform: uppercase;
+                        }
+
+                        .productsCont {
+
+                            .line {
+                                height: 1px;
+                                background: #E5E5E5;
+                            }
+
+                            .productBox {
+                                display: flex;
+                                justify-content: space-between;
+                                margin: 10px 0;
+
+                                .cont1 {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    flex-direction: column;
+
+                                    .name {
+                                        font-size: 30px;
+                                        font-weight: 600;
+                                    }
+
+                                    .category {
+                                        font-size: 30px;
+                                        text-transform: capitalize;
+                                    }
+
+                                    .price {
+                                        font-size: 24px;
+                                        font-weight: 700;
+                                    }
+
+                                    .cartCategory {
+                                        display: flex;
+                                        gap: 10px;
+
+                                        div {
+                                            width: 60px;
+                                            height: 45px;
+                                            line-height: 45px;
+                                            border: 1px solid #1D1F22;
+                                            text-align: center;
+                                        }
+
+                                        div:last-child {
+                                            width: 60px;
+                                            height: 45px;
+                                            line-height: 45px;
+                                            color: white;
+                                            background-color: black;
+                                            border: 1px solid #1D1F22;
+                                            text-align: center;
+                                        }
+                                    }
+
+                                }
+
+                                .cont2 {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    width: 190px;
+
+                                    .qtyBox {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        flex-direction: column;
+                                        height: 185px;
+
+                                        .increment {
+                                            width: 43px;
+                                            height: 43px;
+                                            border: 1px solid black;
+                                            background-color: white;
+                                            font-size: 30px;   
+                                            cursor: pointer;
+                                        }
+
+                                        .quantity {
+                                            text-align: center;
+                                            font-size: 24px;  
+                                            font-weight: bold;                                         
+                                        }
+
+                                        .decrement {
+                                            width: 43px;
+                                            height: 43px;
+                                            border: 1px solid black;
+                                            background-color: white;
+                                            font-size: 30px;   
+                                            cursor: pointer;
+                                        }
+
+                                    }
+
+                                    .imgBox {
                                         width: 140px;
                                         height: 185px;
 
+                                        img {
+                                            object-fit: contain;
+                                            width: 140px;
+                                            height: 185px;
+                                            box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+                                        }
                                     }
-                                }
 
+                                }
+                            }
+
+                            .emptyCart {
+                                font-size: 40px;
+                                font-weight: 600;
+                                text-align: center;
+                                margin: 100px 0;
                             }
                         }
                     }
-                }
 
-                footer {
+                    footer {
 
+                    }
                 }
             }
         }
+    }
+}
+
+@media only screen and (max-width: 12000px) {
+    body {
+        .app {
+            max-width: 1240px;
+
+            .headerCont {
+                max-width: 1240px;
+
+                .cartCont {
+                    width: 1270px;
+                    margin: 80px auto;
+                }
+            }
+
+            .categoryPage {
+                margin-top: 150px;
+                margin-bottom: 50px;
+
+                .categoryname {
+                    margin: 70px 0;
+                }
+
+                .cards {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 70px 50px;
+
+                    .cardCont {
+                        padding: 15px;
+                        flex-basis: 350px;
+
+                        a {
+
+                            img {
+                                width: 350px;
+                                height: 330px;
+    
+                            }
+
+                        }
+
+                        .addButton {
+                            top: 320px;
+                            right: 15px;
+                        }
+
+                        .removeButton {
+                            top: 320px;
+                            right: 15px;
+                        }
+                    }
+                }
+    
+            }
+
+            .productPage {
+                margin-top: 160px;
+                gap: 0 100px;
+
+                .imgCont {
+                    width: 730px;
+
+                    .imgsBox {
+                        flex-direction: column;
+                    }
+
+                    .imgBox {
+                        width: 610px;
+
+                        img {
+                            width: 610px;
+                            height: 510px;
+                        }
+                        
+                    }
+
+                }
+
+            }
+            
+        }
+
+    }
+}
+
+
+@media only screen and (max-width: 1380px) {
+    body {
+        .app {
+            width: 1000px;
+
+            .headerCont {
+                width: 1000px;
+
+                .cartCont {
+                    width: 1020px;
+                    margin: 80px auto;
+                }
+            }
+
+            .categoryPage {
+                margin-top: 150px;
+                margin-bottom: 50px;
+
+                .categoryname {
+                    margin: 70px 0;
+                }
+
+                .cards {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 70px 50px;
+
+                    .cardCont {
+                        padding: 10px;
+                        flex-basis: 280px;
+
+                        a {
+
+                            img {
+                                width: 280px;
+                                height: 265px;
+    
+                            }
+
+                        }
+
+                        .addButton {
+                            top: 250px;
+                            right: 10px;
+                        }
+
+                        .removeButton {
+                            top: 250px;
+                            right: 10px;
+                        }
+                    }
+                }
+    
+            }
+
+            .productPage {
+                margin-top: 160px;
+
+                .imgCont {
+                    width: 600px;
+
+                    .imgBox {
+                        width: 500px;
+
+                        img {
+                            width: 500px;
+                            height: 430px;
+
+                        }
+                        
+                    }
+
+                }
+
+            }
+            
+        }
+
+    }
+}
+
+@media only screen and (max-width: 1080px) {
+    body {
+        .app {
+            width: 750px;
+
+            .headerCont {
+                width: 750px;
+
+                .cartCont {
+                    width: 760px;
+                    margin: 80px auto;
+                }
+            }
+
+            .categoryPage {
+                margin-top: 150px;
+                margin-bottom: 50px;
+
+                .categoryname {
+                    margin: 70px 0;
+                }
+
+                .cards {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 70px 40px;
+
+                    .cardCont {
+                        padding: 10px;
+                        flex-basis: 345px;
+
+                        a {
+
+                            img {
+                                width: 345px;
+                                height: 300px;
+    
+                            }
+
+                        }
+
+                        .addButton {
+                            top: 285px;
+                            right: 10px;
+                        }
+
+                        .removeButton {
+                            top: 285px;
+                            right: 10px;
+                        }
+                    }
+                }
+    
+            }
+
+            .productPage {
+                flex-direction: column;
+                margin-top: 160px;
+                gap: 0 40px;
+
+                .imgCont {
+                    width: 500px;
+
+                    .imgBox {
+                        width: 400px;
+
+                        img {
+                            width: 400px;
+                            height: 350px;
+
+                        }
+                        
+                    }
+
+                }
+
+            }
+            
+        }
+
+    }
+}
+
+@media only screen and (max-width: 890px) {
+    body {
+        .app {
+            width: 630px;
+
+            .headerCont {
+                width: 630px;
+
+                .cartCont {
+                    width: 640px;
+                    margin: 80px auto;
+                }
+            }
+
+            .categoryPage {
+                margin-top: 130px;
+                margin-bottom: 50px;
+
+                .categoryname {
+                    margin: 40px 0;
+                }
+
+                .cards {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 50px 30px;
+
+                    .cardCont {
+                        padding: 10px;
+                        flex-basis: 280px;
+
+                        a {
+
+                            img {
+                                width: 280px;
+                                height: 260px;
+    
+                            }
+
+                        }
+
+                        .addButton {
+                            top: 245px;
+                            right: 10px;
+                        }
+
+                        .removeButton {
+                            top: 245px;
+                            right: 10px;
+                        }
+                    }
+                }
+    
+            }
+            
+        }
+
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    body {
+        .app {
+            max-width: 420px !important;
+
+            .headerCont {
+                max-width: 420px !important;
+            }
+
+            .categoryPage {
+                margin-top: 130px;
+                margin-bottom: 50px;
+
+                .categoryname {
+                    margin: 40px 20px;
+                }
+
+                .cards {
+                    display: grid;
+                    grid-template-columns: repeat(1, 1fr) !important;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    max
+
+                    .cardCont {
+                        padding: 10px;
+                        flex-basis: 300px !important;
+                        width: 300px;
+
+                        a {
+
+                            img {
+                                width: 300px !important;
+                                height: 260px;
+    
+                            }
+
+                        }
+
+                        .addButton {
+                            top: 245px;
+                            right: 10px;
+                        }
+
+                        .removeButton {
+                            top: 245px;
+                            right: 10px;
+                        }
+                    }
+                }
+    
+            }
+
+            .productPage {
+                flex-direction: column;
+                margin-top: 160px;
+                gap: 0 40px;
+
+                .imgCont {
+                    width: 420px;
+                    flex-direction: column;
+
+                    .imgsBox {
+                        flex-direction: row;
+                    }
+
+                    .imgBox {
+                        width: 400px;
+
+                        img {
+                            width: 400px;
+                            height: 350px;
+
+                        }
+                        
+                    }
+
+                }
+
+            }
+            
+        }
+
     }
 }
 
