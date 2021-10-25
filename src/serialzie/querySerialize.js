@@ -1,8 +1,37 @@
-import gql from "graphql-tag"
-
 export const CATEGORY_QUERY = `
 query Category {
   category {
+    name
+    products {
+      id
+      name
+      inStock
+      gallery
+      description
+      category
+      attributes{
+        id
+        name
+        type
+        items{
+          displayValue
+          value
+          id
+        }
+      }
+      prices{
+        currency
+        amount
+      }
+      brand
+    }
+  }
+}
+`
+
+export const CATEGORY_QUERY_FILTER = (category) => `
+query Category {
+  category(input: { title: "${category}" }) {
     name
     products {
       id
@@ -62,9 +91,9 @@ query Categories {
 }
 `
 
-export const SINGLE_PRODUCT_QUERY = (pathname) => `
+export const SINGLE_PRODUCT_QUERY = (id) => `
 query product {
-  product(id: "${pathname}") {
+  product(id: "${id}") {
           id
           name
           inStock

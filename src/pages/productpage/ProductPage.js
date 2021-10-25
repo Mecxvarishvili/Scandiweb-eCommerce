@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Loader from '../../components/Loader';
-import { SINGLE_PRODUCT_QUERY } from '../../serialzie/querySerialize';
-import { DeleteCart, setCart } from '../../store/cart/cartActionCreator';
+import { DeleteCart, SetCart } from '../../store/cart/cartActionCreator';
 import { getCartData } from '../../store/cart/cartSelector';
 import { getProductsCurrency } from '../../store/products/productsSelector';
 import { connect } from 'react-redux';
 import CartButton from '../../components/CartButton';
+import ReactHtmlParser from "react-html-parser" 
+import GetCurrencySymbol from '../../components/GetCurrencySymbol';
+import ProductAttributes from "../../components/ProductAttributes"
+import Api from '../../serialzie/api';
 
 
 const mapStateToProps = (props) => ({
@@ -16,111 +19,80 @@ const mapStateToProps = (props) => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setCartData: (data) => dispatch(setCart(data)),
+        setCartData: (data) => dispatch(SetCart(data)),
         deleteCartData: (data) => dispatch(DeleteCart(data)),
     }
 }
 
 class ProductPage extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         
         this.state = {
             isLoading: true,
             productData: [],
             img: 0,
+            pathname: ''
         }
 
     }
 
-    componentDidMount() {
+    getProduct() {
         this.setState({isLoading: true})
-        fetch('http://localhost:4000/', {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({query: SINGLE_PRODUCT_QUERY(this.props.match.params.id)})
-        })
-            .then(res => res.json())
-            .then(data => this.setState({productData: data.data.product}))
-            .finally(this.setState({isLoading: false}))
+            Api.fetchSingleProduct(this.props.match.params.id)
+                .then(data => this.setState({productData: data.data.product}))
+                .then(this.setState({pathname: this.props.location.pathname}))
+                .finally(this.setState({isLoading: false}))
+
+    }
+
+    componentDidMount() {
+        this.getProduct()
+    }
+
+    componentDidUpdate() {
+        if(this.state.pathname !== this.props.location.pathname) {
+            this.getProduct()
+        }
     }
 
 
     render() {
-            return (
-                <Loader loader={this.state.isLoading}>
-                    <div className="productPage" >
-                        <div className="imgCont">
-                            <div className="imgsBox">
-                                {this.state.productData.gallery && this.state.productData.gallery.map((el, index) => {
-                                    return (
-                                            <img className="img" src={el} onClick={() => this.setState({img: index})} />
-                                    )
-                                })}
-                            </div>
-                            <div className="imgBox">
-                                <img src={this.state.productData.gallery ? this.state.productData.gallery[this.state.img] : <></>} />
-                            </div>
+        return (
+            <Loader loader={this.state.isLoading}>
+                <div className="productPage" >
+                    <div className="imgCont">
+                        <div className="imgsBox">
+                            {this.state.productData.gallery && this.state.productData.gallery.map((el, index) => {
+                                return (
+                                        <img className="imgs" src={el} onClick={() => this.setState({img: index})} key={index} alt={el.name}/>
+                                )
+                            })}
                         </div>
-                        <div className="describeCont">
-                            <div>
-                                <div className="title" >{this.state.productData.name}</div>
-                                <div className="category" >{this.state.productData.category}</div>
-                            </div>
-                                {this.state.productData.category === "clothes" ?
-                                    <div className="sizeCont" >
-                                        <div className='size'>{this.state.productData.attributes[0].id}:</div>
-                                        <div className="inSizeCont">
-                                            {this.state.productData.attributes && this.state.productData.attributes[0].items.map((el, index) => {
-                                               return (
-                                                    <div className="sizeBox" key={index}>
-                                                        <input className="input" type="radio" id={el.value} name="size" value={el.value} checked />
-                                                        <label className="label" for={el.value}>{el.value}</label>
-                                                    </div>
-                                                   )
-                                            })}
-                                        </div>
-                                    </div>
-                                :
-                                this.state.productData.attributes && this.state.productData.attributes.map((el, index) => {
-                                    return(
-                                        <div className="describe" key={index}>
-                                            <div className="describeTitle" >{el.id}:</div>
-                                            <div className="inDescribeCont">
-                                                {el.items.map((el, index, ) => {
-                                                    return (
-                                                        <div className="inputBox" key={index}>
-                                                            <input className="input" type="radio" id={el.value} name="color"  value={el.value} checked />
-                                                            <label className="label" for={el.value}>{el.id}</label>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-                                        </div>
-
-                                    )
-                                })
-                                }
-                            <div className="priceCont" >
-                                <div className="priceTitle" >PRICE:</div>
-                                        {this.state.productData.prices && this.state.productData.prices.filter((price) =>{return price.currency === this.props.currency}).map((el) =>{
-                                            return (
-                                                <div className="price">{Math.round(el.amount)} {el.currency}</div>
-
-                                            )
-
-                                        })}
-                            </div>
-                            <CartButton data={this.state.productData} img={false} />
-                            <div>
-                                <div className="productDescribe">describe:</div>
-                                <div dangerouslySetInnerHTML={{ __html: this.state.productData.description}}></div>
-                            </div>
+                        <div className="imgBox">
+                            <img className="productImg" src={this.state.productData.gallery ? this.state.productData.gallery[this.state.img] : <></>} alt="product" />
                         </div>
                     </div>
-                </Loader>
-            );
-    }   
+                    <div className="describeCont">
+                        <div>
+                            <div className="productTitle" >{this.state.productData.name}</div>
+                            <div className="productCategory" >{this.state.productData.category}</div>
+                        </div>
+                        <ProductAttributes bag='' data={this.state.productData} />
+                        <div className="priceCont" >
+                            <div className="priceTitle" >PRICE:</div>
+                            <GetCurrencySymbol prices={this.state.productData.prices}/>
+                        </div>
+                        {!!this.state.productData.inStock ? <CartButton data={this.state.productData} img={false} /> : <div className="outOfStock" >out of stock</div>}
+                        <div>
+                            <div className="productDescribe">describe:</div>
+                            <div>{ReactHtmlParser(this.state.productData.description)}</div>
+                        </div>
+                    </div>
+                </div>
+            </Loader>
+        );
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter( ProductPage)) ;

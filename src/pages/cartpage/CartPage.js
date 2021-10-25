@@ -3,9 +3,9 @@ import { getCartData } from '../../store/cart/cartSelector';
 import { connect } from 'react-redux';
 import { getProductsCurrency } from '../../store/products/productsSelector';
 import CartQuantity from '../../components/CartQuantity';
-import { Link } from 'react-router-dom';
-import { PRODUCT_PAGE } from '../../serialzie/routes';
-
+import GetCurrencySymbol from '../../components/GetCurrencySymbol';
+import ProductAttributes from '../../components/ProductAttributes';
+import SetCartImage from './SetCartImage';
 
 const mapStateToProps = (props) => ({
     getCartData: getCartData(props),
@@ -13,10 +13,6 @@ const mapStateToProps = (props) => ({
  });
 
 class CartPage extends Component {
-    constructor() {
-        super()
-
-    }
 
     render() {
         return (
@@ -25,39 +21,31 @@ class CartPage extends Component {
                 <div className="productsCont">
                     {this.props.getCartData.length
                     ?
-                    this.props.getCartData.map((el, index) => {
+                    this.props.getCartData.map((el, ) => {
                         return (
-                            <>
+                            <div key={el.id}>
                                 <div className="line" ></div>
-                                <div key={index} className="productBox" >
+                                <div className="productBox" >
                                     <div className="cont1">
                                         <div>
                                             <div className="name" >{el.name}</div>
                                             <div className="category" >{el.category}</div>
-                                            {el.prices.filter((price) =>{return price.currency === this.props.getCurrency}).map((el) =>{
-                                                return (
-                                                    <div className="price">{Math.round(el.amount)} {el.currency}</div>
-
-                                                )
-                                            })}
+                                            <GetCurrencySymbol prices={el.prices} />
                                         </div>
                                         <div className="cartCategory">
-                                            <div>S</div>
-                                            <div>M</div> {/* not working */}
+                                            <ProductAttributes bag='' data={el} />
                                         </div>
                                     </div>
                                     <div className="cont2">
                                         <div className="qtyBox">
-                                            <CartQuantity />
+                                            <CartQuantity data={el} />
                                         </div>
                                         <div className="imgBox">
-                                            <Link to={PRODUCT_PAGE.replace(":id", el.id)} >
-                                                <img src={el.gallery[0]} />
-                                            </Link>
+                                            <SetCartImage gallery={el.gallery} id={el.id} />
                                         </div>
                                     </div>
                                 </div>
-                            </>
+                            </div>
                         )
                     })
                     :

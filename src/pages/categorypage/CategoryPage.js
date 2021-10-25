@@ -4,9 +4,6 @@ import { ALLPRODUCTS_PAGE } from '../../serialzie/routes';
 import CardProducts from "./CardProduct"
 
 class CategoryPage extends Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         return (
