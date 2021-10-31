@@ -1,9 +1,9 @@
 import { DELETE_CART, SET_CART, SET_QUANTITY } from "./cartActionConst"
 
-export const SetCart = (data) => {
+export const SetCart = (data, attributes) => {
     return {
         type: SET_CART,
-        payload: data
+        payload: {data: data, attr: attributes}
     }
 } 
 

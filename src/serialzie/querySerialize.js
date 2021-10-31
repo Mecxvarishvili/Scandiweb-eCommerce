@@ -1,35 +1,5 @@
-export const CATEGORY_QUERY = `
-query Category {
-  category {
-    name
-    products {
-      id
-      name
-      inStock
-      gallery
-      description
-      category
-      attributes{
-        id
-        name
-        type
-        items{
-          displayValue
-          value
-          id
-        }
-      }
-      prices{
-        currency
-        amount
-      }
-      brand
-    }
-  }
-}
-`
 
-export const CATEGORY_QUERY_FILTER = (category) => `
+export const CATEGORY_QUERY = (category) => `
 query Category {
   category(input: { title: "${category}" }) {
     name

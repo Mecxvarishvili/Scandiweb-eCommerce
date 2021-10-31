@@ -10,25 +10,16 @@ const mapStateToProps = (props) => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setCartData: (data) => dispatch(SetCart(data)),
+        setCartData: (data, attr) => dispatch(SetCart(data, attr)),
         deleteCartData: (data) => dispatch(DeleteCart(data)),
     }
 }
 
 class CartButton extends Component {
-    
-    componentDidMount() {
-        this.setState({data: this.props.data})
-    }
 
     render() {
         return (
-            !!this.props.getCartData.find((data) => data.id === this.props.data.id) ?
-            
-            <button className="removeButton" onClick={() => this.props.deleteCartData(this.props.data)}>{this.props.img ? <img src={cart} alt="cart" /> : "REMOVE FROM CART"}</button>
-            :
-            <button className="addButton" onClick={() => this.props.setCartData(this.props.data) }>{this.props.img ? <img src={cart} alt="cart" /> : "ADD TO CART"}</button>
-                
+            <button className="addButton" onClick={() => this.props.setCartData(this.props.data, JSON.stringify(this.props.attributes)) }>{this.props.img ? <img src={cart} alt="cart" /> : "ADD TO CART"}</button>
         );
     }
 }

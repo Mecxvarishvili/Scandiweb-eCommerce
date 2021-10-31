@@ -13,7 +13,7 @@ class TotalAmount extends Component {
     render() {
         const amountArray = this.props.getCartData.map(el => {
             return el.prices.filter((price) =>{ return price.currency === this.props.getCurrency}).map((el) =>{
-                return Math.round(el.amount)
+                return el.amount
             })
         })
     
@@ -24,7 +24,7 @@ class TotalAmount extends Component {
             amount += amountArray[i][a] * this.props.getCartData[i].qty;
             }
         }
-        return (amount)
+        return (amount.toFixed(2))
     }
 }
 

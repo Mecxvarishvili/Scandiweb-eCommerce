@@ -18,17 +18,17 @@ class CartQuantity extends Component {
     constructor(props) {
         super(props)
 
-        this.data =  this.props.getCartData.find(id => id.id === this.props.data.id)
+        this.data =  this.props.getCartData.find(id => id.newId === this.props.data.newId)
     }
 
     increment() {
-        this.props.setQuantity(this.props.data.id, this.data.qty + 1)
+        this.props.setQuantity(this.props.data.newId, this.data.qty + 1)
 
     }
 
     decrement() {
         if(this.data.qty > 1 ) {
-            this.props.setQuantity(this.props.data.id, this.data.qty - 1)
+            this.props.setQuantity(this.props.data.newId, this.data.qty - 1)
         } else {
             this.props.deleteCartData(this.props.data)
         }

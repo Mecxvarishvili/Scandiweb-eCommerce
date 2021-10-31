@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { PRODUCT_PAGE } from '../../serialzie/routes';
 import GetCurrencySymbol from '../../components/GetCurrencySymbol';
 import CartQuantity from "../../components/CartQuantity"
-import ProductAttributes from '../../components/ProductAttributes';
+import SelectedAttributes from '../../components/SelectedAttributes';
 
 const mapStateToProps = (props) => ({
     getCartData: getCartData(props),
@@ -27,7 +27,7 @@ class BagCard extends Component {
             <div className={this.setScroll()}>
                 {this.props.getCartData.map((el) => {
                     return (
-                        <div className="bagCardBox" key={el.id} >
+                        <div className="bagCardBox" key={el.newId} >
                             <div className="leftCont" >
                                 <div className="bagDescribe" >
                                     <div className="bagName" >{el.name}</div>
@@ -36,7 +36,9 @@ class BagCard extends Component {
                                         <GetCurrencySymbol prices={el.prices} />
                                     </div>
                                 </div>
-                                <ProductAttributes bag='bag' data={el} />
+                                <div className="attributesCont" >
+                                    <SelectedAttributes data={el}/>
+                                </div>
                             </div>
                             <div className="rightCont" >
                                 <div className="qtyBox" >

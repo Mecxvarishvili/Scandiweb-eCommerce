@@ -10,29 +10,32 @@
 
         .cardCont {
             position: relative;
-            text-decoration: none;
 
             a {
+                text-decoration: none;
+
                 img {
                     object-fit: contain;
                 }
+            
+                .title {
+                    margin-top: 20px;
+                    font-size: 18px;
+                    font-weight: 300;
+                    color: #1D1F22;
+                }
+            
+                .price {
+                    margin: 5px 0;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 29px;
+                    letter-spacing: 0em;
+                    color: #1D1F22;
+                }
 
-            }
 
-            .title {
-                margin-top: 20px;
-                font-size: 18px;
-                font-weight: 300;
-                color: #1D1F22;
-            }
-
-            .price {
-                margin: 5px 0;
-                font-size: 18px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 29px;
-                letter-spacing: 0em;
             }
 
             .addButton {

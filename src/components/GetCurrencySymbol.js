@@ -30,7 +30,7 @@ class GetCurrencySymbol extends Component {
             return (
                 this.props.prices.filter((price) =>{return price.currency === this.props.getCurrency}).map((el, index) =>{
                     return (
-                        <div className="price" key={index}>{Math.round(el.amount)} {this.getSymbol(el.currency)}</div>
+                        <div className="price" key={index}>{el.amount.toFixed(2)} {this.getSymbol(el.currency)}</div>
                     )
                 })
             )

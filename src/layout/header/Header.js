@@ -55,7 +55,7 @@ class Header extends Component {
     }
 
     setCartClass() {
-        if(this.state.cartMenu === "showCart") {
+        if(this.state.cartMenuCont === "showCartMenuCont") {
             this.setState({cartMenu: "dontShowCart"})
             this.setState({cartMenuCont: "dontShowCartMenuCont"})
         } else {
@@ -87,33 +87,35 @@ class Header extends Component {
 
         return (
             <header >
-                <div className="inHeader">
+                <div className="inHeader" onClick={() => this.setState({cartMenuCont: "dontShowCartMenuCont"})}>
                     <div className="headerCont">
                         <div className="categoryCont">
-                            {this.state.data && this.state.data.map((el, index) =>{
+                            {this.state.data && this.state.data.map((el) =>{
                                 return(
-                                    <Link to={CATEGORY_PAGE.replace(":id", el.name)} key={el.name} onClick={() => this.dontShow()} >
+                                    <Link to={CATEGORY_PAGE.replace(":id", el.name)} key={el.name} >
                                         <div className={this.setCategoryClass(CATEGORY_PAGE.replace(":id", el.name))} >{el.name}</div>
                                     </Link>
                                 )
                             })}
-                            <Link to={ALLPRODUCTS_PAGE} onClick={() => this.dontShow()}>
-                                <div className={this.setCategoryClass(ALLPRODUCTS_PAGE)}>All</div>
-                            </Link>
                         </div>
                         <div className="logoCont">
+                            
+                        <Link to={ALLPRODUCTS_PAGE}>
                             <img className="logo" src={logo} alt="logo" />
+                            </Link>
                         </div>
-                        <div className="cont1">
-                            <CurrencySelect />
-                            <button className="button" onClick={() => this.setCartClass()} >
-                                    <img className="cart" src={cart} alt="cart" />
-                                    {!!this.props.getCartData.length ? <div className="totalItem" >{totalQuantity}</div> : <></>}
-                            </button>
+                        <div className="cont1" >
+                            <div className="inCont1" onClick={(e) => e.stopPropagation()}>
+                                <CurrencySelect />
+                                <button className="button" onClick={() => this.setCartClass()} >
+                                        <img className="cart" src={cart} alt="cart" />
+                                        {!!this.props.getCartData.length ? <div className="totalItem" >{totalQuantity}</div> : <></>}
+                                </button>
+                            </div>
                         </div>
                         <div className={this.state.cartMenuCont}>
                             <div className="cartCont"  >
-                                <div className={this.state.cartMenu} >
+                                <div className={this.state.cartMenu}  onClick={(e) => e.stopPropagation()}>
                                     <div className="bagTitle" >My Bag, <span>{this.props.getCartData.length} items</span></div>
                                     <BagCard dontShow={()=>this.setCartClass()} />
                                     <div className="totalCont" >

@@ -1,80 +1,38 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Loader from '../../components/Loader';
-import { ALLPRODUCTS_PAGE, PRODUCT_PAGE } from '../../serialzie/routes';
-import { getProductsCurrency } from '../../store/products/productsSelector';
 import { withRouter } from 'react-router';
-import { DeleteCart, SetCart } from '../../store/cart/cartActionCreator';
-import { getCartData } from '../../store/cart/cartSelector';
 import CartButton from '../../components/CartButton';
 import GetCurrencySymbol from '../../components/GetCurrencySymbol';
-import Api from '../../serialzie/api';
-
-const mapStateToProps = (props) => ({
-    currency: getProductsCurrency(props),
-    getCartData: getCartData(props),
- });
- 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setCartData: (data) => dispatch(SetCart(data)),
-        deleteCartData: (data) => dispatch(DeleteCart(data)),
-    }
-}
+import { PRODUCT_PAGE } from '../../serialzie/routes';
+import { serializeAttributes } from '../../serialzie/serialize';
 
 class CardProducts extends Component {
     constructor() {
         super()
 
         this.state = {
-            isLoading: true,
-            data: [],
-            pathname: ''
+            attributes: [],
         };
     }
-
-    getProducts() {
-        this.setState({isLoading: true})
-        Api.fetchCategoryProduct(this.props.location.pathname === ALLPRODUCTS_PAGE, this.props.match.params.id)
-            .then(data => this.setState({data: data.data.category.products}))
-            .then(this.setState({pathname: this.props.location.pathname}))
-            .finally(this.setState({isLoading: false}))
-    }
-
     componentDidMount() {
-        this.getProducts()
-    }
-
-    componentDidUpdate() {
-        if(this.state.pathname !== this.props.location.pathname) {
-            this.getProducts()
-            
-        }
-        
+        this.setState({attributes: serializeAttributes(this.props.data.attributes)})
     }
     
     render() {
             return (
-                <Loader loader={this.state.isLoading} >
-                        {this.state.data.map((el, index)=> {
-                            return (
-                                <div className="cardCont" key={index}>
-                                    <div className="inCardCont" >
-                                        <Link className="a" to={PRODUCT_PAGE.replace(":id", el.id)} >
-                                            <img className="img" src={el.gallery[0]} alt={el.name} />
-                                            {el.inStock ? <></> : <div className="inStock" >out of stock</div> }
-                                        </Link>
-                                        <div className="title">{el.name}</div>
-                                        <GetCurrencySymbol prices={el.prices} />
-                                        {el.inStock ? <CartButton data={el} img={true}/> : <></> }
-                                    </div>
-                                </div>
-                            )
-                        })}
-                </Loader>
+                <div className="cardCont">
+                    <Link className="a" to={PRODUCT_PAGE.replace(":id", this.props.data.id)} >
+                        <div className="inCardCont" >
+                                <img className="img" src={this.props.data.gallery[0]} alt={this.props.name} />
+                                {this.props.data.inStock ? <></> : <div className="inStock" >out of stock</div> }
+                            <div className="title">{this.props.data.name}</div>
+                            <GetCurrencySymbol prices={this.props.data.prices} />
+                        </div>
+                    </Link>
+                    {this.props.data.inStock ? <CartButton attributes={this.state.attributes} data={this.props.data} img={true}/> : <></> }
+                </div>
             );
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CardProducts));
+export default (withRouter(CardProducts));

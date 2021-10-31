@@ -39,51 +39,38 @@
                     font-weight: 600;
                 }
 
-                .cartCategory {
+                .attributesCont {
                     display: flex;
-                    gap: 10px;
+                    flex-wrap: wrap;
+                    gap: 10px 20px;
 
-                    .attributesCont {
-            
-                        .attributeTitle {
+                    .attributesBox {
+                        display: flex;
+                        gap: 10px;
+
+                        .attributeId {
+                            font-size: 23px;
+
+                        }
+
+                        .attributeValue {
+                            min-width: 35px;
+                            height: 33px;
+                            line-height: 33px;
+                            border: 1px solid black;
+                            text-align: center;
+                            font-weight: 500;
                             font-size: 18px;
-                            font-weight: 600;
-                            font-family: 'Poppins Medium', sans-serif;
+                            padding: 0 5px;
                         }
-                        .attributeBox {
-                            display: flex;
-                            flex-wrap: wrap;
-                            gap: 10px;
-            
-                            .inputBox {
-                                display: flex;
-                                input {
-                                    display: none;
-                                }
-                            
-                                input:checked + .label {
-                                    background-color: black;
-                                    color: white
-                                }
-                            
-                                .label {
-                                    width: 60px;
-                                    height: 45px;
-                                    line-height: 45px;
-                                    text-align: center;
-                                    border: 1px solid #1D1F22;
-                                    box-sizing: border-box;
-                                    cursor: pointer;
-                                    -webkit-touch-callout: none; 
-                                      -webkit-user-select: none; 
-                                       -khtml-user-select: none; 
-                                         -moz-user-select: none; 
-                                          -ms-user-select: none; 
-                                              user-select: none;
-                                }
-                            }
-            
+
+                        .attributeColor {
+                            min-width: 33px;
+                            height: 33px;
+                            border: 1px solid black;
+                            border-radius: 50%;
                         }
+
                     }
                     
                 }

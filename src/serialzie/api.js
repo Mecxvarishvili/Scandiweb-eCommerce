@@ -1,4 +1,4 @@
-import { CATEGORY_QUERY, CATEGORY_QUERY_FILTER, SINGLE_PRODUCT_QUERY } from "./querySerialize"
+import { CATEGORY_QUERY, SINGLE_PRODUCT_QUERY } from "./querySerialize"
 
 const Api = {
     baseApi: (query) => {
@@ -16,12 +16,8 @@ const Api = {
         return Api.baseApi(SINGLE_PRODUCT_QUERY(id))
     },
 
-    fetchCategoryProduct: (location, id) => {
-        if(location) {
-            return(Api.baseApi(CATEGORY_QUERY))
-        } else {
-            return (Api.baseApi(CATEGORY_QUERY_FILTER(id)))
-        }
+    fetchCategoryProduct: (id) => {
+        return (Api.baseApi(CATEGORY_QUERY(id)))
     }
 
 }

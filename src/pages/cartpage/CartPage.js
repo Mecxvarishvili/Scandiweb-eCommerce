@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { getProductsCurrency } from '../../store/products/productsSelector';
 import CartQuantity from '../../components/CartQuantity';
 import GetCurrencySymbol from '../../components/GetCurrencySymbol';
-import ProductAttributes from '../../components/ProductAttributes';
 import SetCartImage from './SetCartImage';
+import SelectedAttributes from '../../components/SelectedAttributes';
 
 const mapStateToProps = (props) => ({
     getCartData: getCartData(props),
@@ -23,7 +23,7 @@ class CartPage extends Component {
                     ?
                     this.props.getCartData.map((el, ) => {
                         return (
-                            <div key={el.id}>
+                            <div key={el.newId}>
                                 <div className="line" ></div>
                                 <div className="productBox" >
                                     <div className="cont1">
@@ -32,8 +32,8 @@ class CartPage extends Component {
                                             <div className="category" >{el.category}</div>
                                             <GetCurrencySymbol prices={el.prices} />
                                         </div>
-                                        <div className="cartCategory">
-                                            <ProductAttributes bag='' data={el} />
+                                        <div className="attributesCont">
+                                            <SelectedAttributes data={el}/>
                                         </div>
                                     </div>
                                     <div className="cont2">

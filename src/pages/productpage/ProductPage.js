@@ -2,20 +2,12 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Loader from '../../components/Loader';
 import { DeleteCart, SetCart } from '../../store/cart/cartActionCreator';
-import { getCartData } from '../../store/cart/cartSelector';
-import { getProductsCurrency } from '../../store/products/productsSelector';
 import { connect } from 'react-redux';
 import CartButton from '../../components/CartButton';
 import ReactHtmlParser from "react-html-parser" 
 import GetCurrencySymbol from '../../components/GetCurrencySymbol';
-import ProductAttributes from "../../components/ProductAttributes"
+import ProductAttributes from "./ProductAttributes"
 import Api from '../../serialzie/api';
-
-
-const mapStateToProps = (props) => ({
-    currency: getProductsCurrency(props),
-    getCartData: getCartData(props),
- });
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -32,7 +24,8 @@ class ProductPage extends Component {
             isLoading: true,
             productData: [],
             img: 0,
-            pathname: ''
+            pathname: '',
+            attributes: [],
         }
 
     }
@@ -43,7 +36,7 @@ class ProductPage extends Component {
                 .then(data => this.setState({productData: data.data.product}))
                 .then(this.setState({pathname: this.props.location.pathname}))
                 .finally(this.setState({isLoading: false}))
-
+            
     }
 
     componentDidMount() {
@@ -53,9 +46,20 @@ class ProductPage extends Component {
     componentDidUpdate() {
         if(this.state.pathname !== this.props.location.pathname) {
             this.getProduct()
+            this.setState({attributes: []})
         }
     }
 
+    setAttributes(data) {
+        if(!this.state.attributes.length || !this.state.pathname === this.props.location.pathname) {
+            this.setState({attributes: [...data]})
+        } else {
+            var addData = [...this.state.attributes]
+            addData.find(el => el.id === data.id).value = data.value
+            this.setState({attributes: [...addData]})
+        }
+        
+    }
 
     render() {
         return (
@@ -78,12 +82,12 @@ class ProductPage extends Component {
                             <div className="productTitle" >{this.state.productData.name}</div>
                             <div className="productCategory" >{this.state.productData.category}</div>
                         </div>
-                        <ProductAttributes bag='' data={this.state.productData} />
+                        <ProductAttributes data={this.state.productData} setAtt={(attr) => this.setAttributes(attr)} />
                         <div className="priceCont" >
                             <div className="priceTitle" >PRICE:</div>
                             <GetCurrencySymbol prices={this.state.productData.prices}/>
                         </div>
-                        {!!this.state.productData.inStock ? <CartButton data={this.state.productData} img={false} /> : <div className="outOfStock" >out of stock</div>}
+                        {!!this.state.productData.inStock ? <CartButton attributes={this.state.attributes} data={this.state.productData} img={false} /> : <div className="outOfStock" >out of stock</div>}
                         <div>
                             <div className="productDescribe">describe:</div>
                             <div>{ReactHtmlParser(this.state.productData.description)}</div>
@@ -95,4 +99,4 @@ class ProductPage extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter( ProductPage)) ;
+export default connect(null, mapDispatchToProps)(withRouter( ProductPage)) ;

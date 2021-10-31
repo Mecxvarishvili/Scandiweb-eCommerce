@@ -55,17 +55,20 @@ header .inHeader .headerCont .logoCont .logo {
 header .inHeader .headerCont .cont1 {
   display: flex;
   justify-content: flex-end;
+}
+header .inHeader .headerCont .cont1 .inCont1 {
+  display: flex;
   align-items: center;
 }
-header .inHeader .headerCont .cont1 .currencyCont {
+header .inHeader .headerCont .cont1 .inCont1 .currencyCont {
   margin: 0 10px;
 }
-header .inHeader .headerCont .cont1 .currencyCont select {
+header .inHeader .headerCont .cont1 .inCont1 .currencyCont select {
   border: none;
   outline: none;
   cursor: pointer;
 }
-header .inHeader .headerCont .cont1 button {
+header .inHeader .headerCont .cont1 .inCont1 button {
   border: none;
   background-color: white;
   cursor: pointer;
@@ -73,7 +76,7 @@ header .inHeader .headerCont .cont1 button {
   width: 45px;
   height: 45px;
 }
-header .inHeader .headerCont .cont1 button div {
+header .inHeader .headerCont .cont1 .inCont1 button div {
   position: absolute;
   top: 0;
   right: 0;
@@ -122,7 +125,7 @@ header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .addScroll {
   overflow-x: hidden;
 }
 header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont {
-  max-height: 480px;
+  max-height: 400px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -137,22 +140,6 @@ header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* 
-
-                                     .bagSizeCont {
-                                         display: flex;
-                                         gap: 5px;
-
-                                         .bagSizeBox {
-                                             width: 23px;
-                                             height: 23px;
-                                             line-height: 23px;
-                                             border: 1px solid #1D1F22;
-                                             text-align: center;
-                                             font-size: 14px;
-                                         }
-                                     }
-  */
 }
 header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .bagDescribe .bagName {
   color: #1D1F22;
@@ -169,41 +156,35 @@ header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont 
   margin: 10px 0;
   font-weight: 500;
 }
-header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributeTitle {
-  font-size: 15px;
-  font-weight: bold;
-  font-family: "Poppins Medium", sans-serif;
-}
-header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributeBox {
+header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 3px;
 }
-header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributeBox .inputBox {
+header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributesBox {
   display: flex;
+  gap: 10px;
+  align-items: center;
 }
-header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributeBox .inputBox input {
-  display: none;
+header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributesBox .attributeId {
+  font-size: 15px;
+  font-weight: 500;
 }
-header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributeBox .inputBox input:checked + .label {
-  background-color: black;
-  color: white;
-}
-header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributeBox .inputBox .label {
-  min-width: 23px;
+header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributesBox .attributeValue {
+  min-width: 18px;
   height: 23px;
   line-height: 23px;
-  border: 1px solid #1D1F22;
+  border: 1px solid black;
   text-align: center;
+  font-weight: 500;
   font-size: 14px;
-  box-sizing: border-box;
-  cursor: pointer;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  padding: 0 3px;
+}
+header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributesBox .attributeColor {
+  min-width: 23px;
+  height: 23px;
+  border: 1px solid black;
+  border-radius: 50%;
 }
 header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .rightCont {
   flex-basis: 140px;
@@ -311,24 +292,27 @@ header .inHeader .headerCont .dontShowCartMenuCont {
 }
 .categoryPage .cards .cardCont {
   position: relative;
+}
+.categoryPage .cards .cardCont a {
   text-decoration: none;
 }
 .categoryPage .cards .cardCont a img {
   object-fit: contain;
 }
-.categoryPage .cards .cardCont .title {
+.categoryPage .cards .cardCont a .title {
   margin-top: 20px;
   font-size: 18px;
   font-weight: 300;
   color: #1D1F22;
 }
-.categoryPage .cards .cardCont .price {
+.categoryPage .cards .cardCont a .price {
   margin: 5px 0;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: 29px;
   letter-spacing: 0em;
+  color: #1D1F22;
 }
 .categoryPage .cards .cardCont .addButton {
   display: none;
@@ -472,6 +456,36 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   -ms-user-select: none;
   user-select: none;
 }
+.productPage .describeCont .attributesCont .attributeBox .colorBox {
+  display: flex;
+}
+.productPage .describeCont .attributesCont .attributeBox .colorBox input {
+  display: none;
+}
+.productPage .describeCont .attributesCont .attributeBox .colorBox .colorLabel {
+  width: 60px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 1px solid dimgray;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.productPage .describeCont .attributesCont .attributeBox .colorBox .colorLabel .span {
+  font-size: 20px;
+  font-weight: bold;
+  display: none;
+  color: dimgray;
+}
+.productPage .describeCont .attributesCont .attributeBox .colorBox input:checked + .colorLabel .span {
+  display: block;
+}
 .productPage .describeCont .priceCont .priceTitle {
   font-family: "Poppins Medium", sans-serif;
   font-size: 18px;
@@ -549,44 +563,33 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   font-size: 24px;
   font-weight: 600;
 }
-.cartPage .productsCont .productBox .cont1 .cartCategory {
-  display: flex;
-  gap: 10px;
-}
-.cartPage .productsCont .productBox .cont1 .cartCategory .attributesCont .attributeTitle {
-  font-size: 18px;
-  font-weight: 600;
-  font-family: "Poppins Medium", sans-serif;
-}
-.cartPage .productsCont .productBox .cont1 .cartCategory .attributesCont .attributeBox {
+.cartPage .productsCont .productBox .cont1 .attributesCont {
   display: flex;
   flex-wrap: wrap;
+  gap: 10px 20px;
+}
+.cartPage .productsCont .productBox .cont1 .attributesCont .attributesBox {
+  display: flex;
   gap: 10px;
 }
-.cartPage .productsCont .productBox .cont1 .cartCategory .attributesCont .attributeBox .inputBox {
-  display: flex;
+.cartPage .productsCont .productBox .cont1 .attributesCont .attributesBox .attributeId {
+  font-size: 23px;
 }
-.cartPage .productsCont .productBox .cont1 .cartCategory .attributesCont .attributeBox .inputBox input {
-  display: none;
-}
-.cartPage .productsCont .productBox .cont1 .cartCategory .attributesCont .attributeBox .inputBox input:checked + .label {
-  background-color: black;
-  color: white;
-}
-.cartPage .productsCont .productBox .cont1 .cartCategory .attributesCont .attributeBox .inputBox .label {
-  width: 60px;
-  height: 45px;
-  line-height: 45px;
+.cartPage .productsCont .productBox .cont1 .attributesCont .attributesBox .attributeValue {
+  min-width: 35px;
+  height: 33px;
+  line-height: 33px;
+  border: 1px solid black;
   text-align: center;
-  border: 1px solid #1D1F22;
-  box-sizing: border-box;
-  cursor: pointer;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 0 5px;
+}
+.cartPage .productsCont .productBox .cont1 .attributesCont .attributesBox .attributeColor {
+  min-width: 33px;
+  height: 33px;
+  border: 1px solid black;
+  border-radius: 50%;
 }
 .cartPage .productsCont .productBox .cont2 {
   display: flex;
@@ -961,10 +964,45 @@ header .inHeader .headerCont .dontShowCartMenuCont {
     height: 350px;
   }
 }
-/* .input:checked +  .label {
-    background: blue !important;
-    color: white !important;
+.lds-ringBox {
+  width: 100%;
+  display: flex;
 }
- */
+.lds-ringBox .lds-ring {
+  margin: 100px auto;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ringBox .lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid black;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: black transparent transparent transparent;
+}
+.lds-ringBox .lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ringBox .lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ringBox .lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /*# sourceMappingURL=App.css.map */

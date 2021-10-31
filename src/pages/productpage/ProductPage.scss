@@ -129,6 +129,44 @@
                     }
                 }
 
+                .colorBox {
+                    display: flex;
+                    input {
+                        display: none;
+                    }
+                
+                    .colorLabel {
+                        width: 60px;
+                        height: 45px;
+                        line-height: 45px;
+                        text-align: center;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                        border: 1px solid rgb(105, 105, 105);
+                        -webkit-touch-callout: none; 
+                          -webkit-user-select: none; 
+                           -khtml-user-select: none; 
+                             -moz-user-select: none; 
+                              -ms-user-select: none; 
+                                  user-select: none;
+
+                        .span {
+                            font-size: 20px;
+                            font-weight: bold;
+                            display: none;
+                            color: rgb(105, 105, 105);
+                        }
+                    }
+                
+                    input:checked + .colorLabel {
+
+                        .span {
+                            display: block
+                        }
+                    }
+                    
+                }
+
             }
         }
 

@@ -62,39 +62,44 @@ header {
             .cont1 {
                 display: flex;
                 justify-content: flex-end;
-                align-items: center;
-            
-                .currencyCont {
-                    margin: 0 10px;
-                
-                    select {
-                    border: none;
-                    outline: none;
-                    cursor: pointer;
-                    }
-                }
-            
-                button {
-                    border: none;
-                    background-color: white;
-                    cursor: pointer;
-                    position: relative;
-                    width: 45px;
-                    height: 45px;
 
-                    div {
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        width: 20px;
-                        height: 20px;
-                        line-height: 20px;
-                        background-color: black;
-                        color: white;
-                        font-size: 14px;
-                        font-weight: 600;
-                        border-radius: 50%;
+                .inCont1 {
+                    display: flex;
+                    align-items: center;
+            
+                    .currencyCont {
+                        margin: 0 10px;
+                    
+                        select {
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                        }
                     }
+                
+                    button {
+                        border: none;
+                        background-color: white;
+                        cursor: pointer;
+                        position: relative;
+                        width: 45px;
+                        height: 45px;
+    
+                        div {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            width: 20px;
+                            height: 20px;
+                            line-height: 20px;
+                            background-color: black;
+                            color: white;
+                            font-size: 14px;
+                            font-weight: 600;
+                            border-radius: 50%;
+                        }
+                    }
+
                 }
             }
         
@@ -138,7 +143,7 @@ header {
                         }
 
                         .bagCardCont {
-                            max-height: 480px;
+                            max-height: 400px;
                             display: flex;
                             flex-direction: column;
                             gap: 30px;
@@ -177,65 +182,46 @@ header {
                                         }
                                     }
 
+                                    
+
                                     .attributesCont {
-                            
-                                        .attributeTitle {
-                                            font-size: 15px;
-                                            font-weight: bold;
-                                            font-family: 'Poppins Medium', sans-serif;
-                                        }
-                                        .attributeBox {
-                                            display: flex;
-                                            flex-wrap: wrap;
-                                            gap: 5px;
-                            
-                                            .inputBox {
-                                                display: flex;
-                                                input {
-                                                    display: none;
-                                                }
-                                            
-                                                input:checked + .label {
-                                                    background-color: black;
-                                                    color: white
-                                                }
-                                            
-                                                .label {
-                                                    min-width: 23px;
-                                                    height: 23px;
-                                                    line-height: 23px;
-                                                    border: 1px solid #1D1F22;
-                                                    text-align: center;
-                                                    font-size: 14px;
-                                                    box-sizing: border-box;
-                                                    cursor: pointer;
-                                                    -webkit-touch-callout: none; 
-                                                      -webkit-user-select: none; 
-                                                       -khtml-user-select: none; 
-                                                         -moz-user-select: none; 
-                                                          -ms-user-select: none; 
-                                                              user-select: none;
-                                                }
-                                            }
-                            
-                                        }
-                                    }
-                                    /* 
-
-                                    .bagSizeCont {
                                         display: flex;
-                                        gap: 5px;
+                                        flex-wrap: wrap;
+                                        gap: 3px;
 
-                                        .bagSizeBox {
-                                            width: 23px;
-                                            height: 23px;
-                                            line-height: 23px;
-                                            border: 1px solid #1D1F22;
-                                            text-align: center;
-                                            font-size: 14px;
+                                        .attributesBox {
+                                            display: flex;
+                                            gap: 10px;
+                                            align-items: center;
+
+                                            .attributeId {
+                                                font-size: 15px;
+                                                font-weight: 500;
+                                                
+
+                                            }
+
+                                            .attributeValue {
+                                                min-width: 18px;
+                                                height: 23px;
+                                                line-height: 23px;
+                                                border: 1px solid black;
+                                                text-align: center;
+                                                font-weight: 500;
+                                                font-size: 14px;
+                                                padding: 0 3px;
+                                            }
+
+                                            .attributeColor {
+                                                min-width: 23px;
+                                                height: 23px;
+                                                border: 1px solid black;
+                                                border-radius: 50%;
+                                            }
+
                                         }
+                                        
                                     }
- */
                                 }
 
                                 .rightCont {
