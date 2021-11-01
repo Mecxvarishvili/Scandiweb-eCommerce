@@ -7,6 +7,22 @@ const mapStateToProps = (props) => ({
  });
 
 class GetCurrencySymbol extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            currency: "",
+        }
+    }
+    componentDidMount() {
+        this.setState({currency: this.props.getCurrency})
+    }
+
+    componentDidUpdate() {
+        if(this.state.currency !== this.props.getCurrency) {
+            this.setState({currency: this.props.getCurrency})
+        }
+    }
 
     getSymbol(currency) {
         switch(currency) {
@@ -21,14 +37,14 @@ class GetCurrencySymbol extends Component {
             case "RUB":
                 return "₽"
             default: 
-                return "$"
+                return ""
         }
     }
 
     render() {
         if(!!this.props.prices) {
             return (
-                this.props.prices.filter((price) =>{return price.currency === this.props.getCurrency}).map((el, index) =>{
+                this.props.prices.filter((price) =>{return price.currency === this.state.currency}).map((el, index) => {
                     return (
                         <div className="price" key={index}>{el.amount.toFixed(2)} {this.getSymbol(el.currency)}</div>
                     )
@@ -36,7 +52,7 @@ class GetCurrencySymbol extends Component {
             )
         } else {
             return (
-                this.getSymbol(this.props.getCurrency)
+                this.getSymbol(this.state.currency)
             );
 
         } 

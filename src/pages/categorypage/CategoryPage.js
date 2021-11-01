@@ -33,7 +33,6 @@ class CategoryPage extends Component {
             this.getProducts()
             
         }
-        
     }
 
     render() {

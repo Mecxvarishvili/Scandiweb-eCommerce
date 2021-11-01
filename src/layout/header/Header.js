@@ -3,7 +3,6 @@ import logo from "../../images/logo.png"
 import cart from "../../images/Cart.png"
 import { Link } from 'react-router-dom';
 import { ALLPRODUCTS_PAGE, CART_PAGE, CATEGORY_PAGE } from '../../serialzie/routes';
-import { CATEGORIES_QUERY } from '../../serialzie/querySerialize';
 import { connect } from 'react-redux';
 import { getCartData } from '../../store/cart/cartSelector';
 import { getProductsCurrency } from '../../store/products/productsSelector';
@@ -30,19 +29,6 @@ class Header extends Component {
             cartMenuCont: "dontShowCartMenuCont",
             pathname: '',
         }
-    }
-
-    componentDidMount() {
-        this.setState({isLoading: true})
-        fetch('http://localhost:4000/', {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({query: CATEGORIES_QUERY})
-        })
-            .then(res => res.json())
-            .then(data => this.setState({data: data.data.categories}))
-            .then(this.setState({pathname: this.props.location.pathname}))
-            .then(this.setState({isLoading: false}))
     }
 
     componentDidUpdate() {
@@ -90,13 +76,12 @@ class Header extends Component {
                 <div className="inHeader" onClick={() => this.setState({cartMenuCont: "dontShowCartMenuCont"})}>
                     <div className="headerCont">
                         <div className="categoryCont">
-                            {this.state.data && this.state.data.map((el) =>{
-                                return(
-                                    <Link to={CATEGORY_PAGE.replace(":id", el.name)} key={el.name} >
-                                        <div className={this.setCategoryClass(CATEGORY_PAGE.replace(":id", el.name))} >{el.name}</div>
+                                    <Link to={CATEGORY_PAGE.replace(":id", "clothes")} key={"clothes"} >
+                                        <div className={this.setCategoryClass(CATEGORY_PAGE.replace(":id", "clothes"))} >clothes</div>
                                     </Link>
-                                )
-                            })}
+                                    <Link to={CATEGORY_PAGE.replace(":id", "tech")} key={"tech"} >
+                                        <div className={this.setCategoryClass(CATEGORY_PAGE.replace(":id", "tech"))} >tech</div>
+                                    </Link>
                         </div>
                         <div className="logoCont">
                             

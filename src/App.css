@@ -145,6 +145,7 @@ header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont 
   color: #1D1F22;
   margin: 5px 0;
   line-height: 15px;
+  font-weight: 500;
 }
 header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .bagDescribe .bagCategory {
   color: #1D1F22;
@@ -171,14 +172,13 @@ header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont 
   font-weight: 500;
 }
 header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributesBox .attributeValue {
-  min-width: 18px;
   height: 23px;
   line-height: 23px;
   border: 1px solid black;
   text-align: center;
   font-weight: 500;
   font-size: 14px;
-  padding: 0 3px;
+  padding: 0 4px;
 }
 header .inHeader .headerCont .showCartMenuCont .cartCont .showCart .bagCardCont .bagCardBox .leftCont .attributesCont .attributesBox .attributeColor {
   min-width: 23px;
@@ -576,14 +576,13 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   font-size: 23px;
 }
 .cartPage .productsCont .productBox .cont1 .attributesCont .attributesBox .attributeValue {
-  min-width: 35px;
   height: 33px;
   line-height: 33px;
   border: 1px solid black;
   text-align: center;
   font-weight: 500;
   font-size: 18px;
-  padding: 0 5px;
+  padding: 0 7px;
 }
 .cartPage .productsCont .productBox .cont1 .attributesCont .attributesBox .attributeColor {
   min-width: 33px;

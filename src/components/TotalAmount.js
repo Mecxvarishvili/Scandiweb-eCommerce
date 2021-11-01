@@ -9,10 +9,26 @@ const mapStateToProps = (props) => ({
  });
 
 class TotalAmount extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            currency: "",
+        }
+    }
+    componentDidMount() {
+        this.setState({currency: this.props.getCurrency})
+    }
+
+    componentDidUpdate() {
+        if(this.state.currency !== this.props.getCurrency) {
+            this.setState({currency: this.props.getCurrency})
+        }
+    }
 
     render() {
         const amountArray = this.props.getCartData.map(el => {
-            return el.prices.filter((price) =>{ return price.currency === this.props.getCurrency}).map((el) =>{
+            return el.prices.filter((price) =>{ return price.currency === this.state.currency}).map((el) =>{
                 return el.amount
             })
         })
