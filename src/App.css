@@ -287,25 +287,140 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   color: #1D1F22;
   text-transform: capitalize;
 }
-.categoryPage .cards {
+.categoryPage .mainCont {
+  display: flex;
+}
+.categoryPage .mainCont select {
+  cursor: pointer;
+}
+.categoryPage .mainCont .filterCont {
+  padding: 0 10px;
+}
+.categoryPage .mainCont .filterCont .filterTop {
+  display: flex;
   justify-content: space-between;
 }
-.categoryPage .cards .cardCont {
+.categoryPage .mainCont .filterCont .filterTop .filterTitle {
+  font-size: 22px;
+  padding-bottom: 10px;
+}
+.categoryPage .mainCont .filterCont .categorySelect .select {
+  width: 100%;
+  outline: none;
+  height: 30px;
+  font-size: 19px;
+  border: none;
+}
+.categoryPage .mainCont .filterCont .categorySelect .select option {
+  padding: 0;
+}
+.categoryPage .mainCont .filterCont .notSelected {
+  font-size: 18px;
+  padding: 30px 0;
+}
+.categoryPage .mainCont .filterCont form {
+  margin: 20px 0;
+}
+.categoryPage .mainCont .filterCont form .selectBox {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.categoryPage .mainCont .filterCont form .selectBox select {
+  outline: none;
+  font-size: 17px;
+  border: none;
+  width: 100%;
+}
+.categoryPage .mainCont .filterCont form .selectBox select option {
+  padding: 0;
+}
+.categoryPage .mainCont .filterCont form .colorsBox .colorTitle {
+  font-size: 18px;
+}
+.categoryPage .mainCont .filterCont form .colorsBox .colorBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.categoryPage .mainCont .filterCont form .colorsBox .colorBox input {
+  display: none;
+}
+.categoryPage .mainCont .filterCont form .colorsBox .colorBox .colorLabel {
+  width: 30px;
+  height: 30px;
+  line-height: 45px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 1px solid dimgray;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.categoryPage .mainCont .filterCont form .colorsBox .colorBox .colorLabel .span {
+  position: relative;
+  top: -10px;
+  height: 30px;
+  font-weight: bold;
+  display: none;
+  color: dimgray;
+}
+.categoryPage .mainCont .filterCont form .colorsBox .colorBox input:checked + .colorLabel .span {
+  display: block;
+}
+.categoryPage .mainCont .filterCont form .checkBox {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  margin: 20px 0;
+}
+.categoryPage .mainCont .filterCont form .checkBox input[type=checkbox] {
+  transform: scale(1.3);
+}
+.categoryPage .mainCont .filterCont form button {
+  margin-top: 20px;
+  border: none;
+  background-color: #5ECE7B;
+  color: white;
+  width: 80px;
+  height: 35px;
+  font-size: 18px;
+  border-radius: 10%;
+  cursor: pointer;
+}
+.categoryPage .mainCont .cards {
+  justify-content: space-between;
+}
+.categoryPage .mainCont .cards .noData {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  justify-items: center;
+}
+.categoryPage .mainCont .cards .noData div {
+  margin-top: 20px;
+  font-size: 40px;
+}
+.categoryPage .mainCont .cards .cardCont {
   position: relative;
 }
-.categoryPage .cards .cardCont a {
+.categoryPage .mainCont .cards .cardCont a {
   text-decoration: none;
 }
-.categoryPage .cards .cardCont a img {
+.categoryPage .mainCont .cards .cardCont a img {
   object-fit: contain;
 }
-.categoryPage .cards .cardCont a .title {
+.categoryPage .mainCont .cards .cardCont a .title {
   margin-top: 20px;
   font-size: 18px;
   font-weight: 300;
   color: #1D1F22;
 }
-.categoryPage .cards .cardCont a .price {
+.categoryPage .mainCont .cards .cardCont a .price {
   margin: 5px 0;
   font-size: 18px;
   font-style: normal;
@@ -314,7 +429,7 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   letter-spacing: 0em;
   color: #1D1F22;
 }
-.categoryPage .cards .cardCont .addButton {
+.categoryPage .mainCont .cards .cardCont .addButton {
   display: none;
   position: absolute;
   background: #5ECE7B;
@@ -324,7 +439,7 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   height: 50px;
   cursor: pointer;
 }
-.categoryPage .cards .cardCont .removeButton {
+.categoryPage .mainCont .cards .cardCont .removeButton {
   display: none;
   position: absolute;
   background: #e92200;
@@ -334,20 +449,20 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   height: 50px;
   cursor: pointer;
 }
-.categoryPage .cards .cardCont .inStock {
+.categoryPage .mainCont .cards .cardCont .inStock {
   position: absolute;
   color: #8D8F9A;
   text-transform: uppercase;
   text-align: center;
   background-color: #b8b9bb18;
 }
-.categoryPage .cardCont:hover {
+.categoryPage .mainCont .cardCont:hover {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.categoryPage .cardCont:hover .addButton {
+.categoryPage .mainCont .cardCont:hover .addButton {
   display: block;
 }
-.categoryPage .cardCont:hover .removeButton {
+.categoryPage .mainCont .cardCont:hover .removeButton {
   display: block;
 }
 
@@ -683,32 +798,61 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   body .app .categoryPage .categoryname {
     margin: 70px 0;
   }
-  body .app .categoryPage .cards {
+  body .app .categoryPage .mainCont {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 0 20px;
+  }
+  body .app .categoryPage .mainCont .filterCont {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  body .app .categoryPage .mainCont .filterCont .openBar {
+    display: block;
+    transition: 1s;
+  }
+  body .app .categoryPage .mainCont .filterCont .closeBar {
+    display: block;
+    transition: 1s;
+  }
+  body .app .categoryPage .mainCont .filterCont .menuIcon {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  body .app .categoryPage .mainCont .filterCont .menuIcon div {
+    width: 27px;
+    height: 4px;
+    background-color: black;
+    margin: 4px 0;
+  }
+  body .app .categoryPage .mainCont .cards {
+    grid-column-start: 3;
+    grid-column-end: 11;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 70px 50px;
+    gap: 50px 30px;
   }
-  body .app .categoryPage .cards .cardCont {
+  body .app .categoryPage .mainCont .cards .cardCont {
     padding: 15px;
-    flex-basis: 350px;
   }
-  body .app .categoryPage .cards .cardCont a img {
-    width: 350px;
-    height: 330px;
+  body .app .categoryPage .mainCont .cards .cardCont a img {
+    width: 100%;
+    height: 300px;
   }
-  body .app .categoryPage .cards .cardCont .addButton {
+  body .app .categoryPage .mainCont .cards .cardCont .addButton {
+    top: 290px;
+    right: 15px;
+  }
+  body .app .categoryPage .mainCont .cards .cardCont .removeButton {
     top: 320px;
     right: 15px;
   }
-  body .app .categoryPage .cards .cardCont .removeButton {
-    top: 320px;
-    right: 15px;
-  }
-  body .app .categoryPage .cards .cardCont .inStock {
+  body .app .categoryPage .mainCont .cards .cardCont .inStock {
     font-size: 24px;
     top: 15px;
-    width: 350px;
-    height: 330px;
+    width: 280px;
+    height: 300px;
     line-height: 330px;
   }
   body .app .productPage {
@@ -747,32 +891,42 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   body .app .categoryPage .categoryname {
     margin: 70px 0;
   }
-  body .app .categoryPage .cards {
+  body .app .categoryPage .mainCont {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 70px 50px;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 0 10px;
   }
-  body .app .categoryPage .cards .cardCont {
+  body .app .categoryPage .mainCont .filterCont {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  body .app .categoryPage .mainCont .cards {
+    grid-column-start: 3;
+    grid-column-end: 11;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 40px;
+  }
+  body .app .categoryPage .mainCont .cards .cardCont {
     padding: 10px;
-    flex-basis: 280px;
   }
-  body .app .categoryPage .cards .cardCont a img {
-    width: 280px;
-    height: 265px;
+  body .app .categoryPage .mainCont .cards .cardCont a img {
+    width: 100%;
+    height: 340px;
   }
-  body .app .categoryPage .cards .cardCont .addButton {
+  body .app .categoryPage .mainCont .cards .cardCont .addButton {
+    top: 260px;
+    right: 10px;
+  }
+  body .app .categoryPage .mainCont .cards .cardCont .removeButton {
     top: 250px;
     right: 10px;
   }
-  body .app .categoryPage .cards .cardCont .removeButton {
-    top: 250px;
-    right: 10px;
-  }
-  body .app .categoryPage .cards .cardCont .inStock {
+  body .app .categoryPage .mainCont .cards .cardCont .inStock {
     font-size: 22px;
     top: 10px;
-    width: 280px;
-    height: 265px;
+    width: 360px;
+    height: 340px;
     line-height: 265px;
   }
   body .app .productPage {
@@ -807,28 +961,58 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   body .app .categoryPage .categoryname {
     margin: 70px 0;
   }
-  body .app .categoryPage .cards {
+  body .app .categoryPage .mainCont {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 0 10px;
+  }
+  body .app .categoryPage .mainCont .filterCont {
+    grid-column-start: 1;
+    grid-column-end: 11;
+  }
+  body .app .categoryPage .mainCont .filterCont .openBar {
+    display: block;
+    transition: 1s;
+  }
+  body .app .categoryPage .mainCont .filterCont .closeBar {
+    display: none;
+    transition: 1s;
+  }
+  body .app .categoryPage .mainCont .filterCont .menuIcon {
+    visibility: visible;
+    opacity: 1;
+    cursor: pointer;
+  }
+  body .app .categoryPage .mainCont .filterCont .menuIcon div {
+    width: 27px;
+    height: 4px;
+    background-color: black;
+    margin: 4px 0;
+  }
+  body .app .categoryPage .mainCont .cards {
+    grid-column-start: 1;
+    grid-column-end: 11;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 70px 40px;
   }
-  body .app .categoryPage .cards .cardCont {
+  body .app .categoryPage .mainCont .cards .cardCont {
     padding: 10px;
     flex-basis: 345px;
   }
-  body .app .categoryPage .cards .cardCont a img {
+  body .app .categoryPage .mainCont .cards .cardCont a img {
     width: 345px;
     height: 300px;
   }
-  body .app .categoryPage .cards .cardCont .addButton {
+  body .app .categoryPage .mainCont .cards .cardCont .addButton {
     top: 285px;
     right: 10px;
   }
-  body .app .categoryPage .cards .cardCont .removeButton {
+  body .app .categoryPage .mainCont .cards .cardCont .removeButton {
     top: 285px;
     right: 10px;
   }
-  body .app .categoryPage .cards .cardCont .inStock {
+  body .app .categoryPage .mainCont .cards .cardCont .inStock {
     font-size: 24px;
     top: 10px;
     width: 345px;
@@ -869,28 +1053,28 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   body .app .categoryPage .categoryname {
     margin: 40px 0;
   }
-  body .app .categoryPage .cards {
+  body .app .categoryPage .mainCont .cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 50px 30px;
   }
-  body .app .categoryPage .cards .cardCont {
+  body .app .categoryPage .mainCont .cards .cardCont {
     padding: 10px;
     flex-basis: 280px;
   }
-  body .app .categoryPage .cards .cardCont a img {
+  body .app .categoryPage .mainCont .cards .cardCont a img {
     width: 280px;
     height: 260px;
   }
-  body .app .categoryPage .cards .cardCont .addButton {
+  body .app .categoryPage .mainCont .cards .cardCont .addButton {
     top: 245px;
     right: 10px;
   }
-  body .app .categoryPage .cards .cardCont .removeButton {
+  body .app .categoryPage .mainCont .cards .cardCont .removeButton {
     top: 245px;
     right: 10px;
   }
-  body .app .categoryPage .cards .cardCont .inStock {
+  body .app .categoryPage .mainCont .cards .cardCont .inStock {
     font-size: 22px;
     top: 10px;
     width: 280px;
@@ -912,31 +1096,31 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   body .app .categoryPage .categoryname {
     margin: 40px 20px;
   }
-  body .app .categoryPage .cards {
+  body .app .categoryPage .mainCont .cards {
     display: grid;
     grid-template-columns: repeat(1, 1fr) !important;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  body .app .categoryPage .cards max .cardCont {
+  body .app .categoryPage .mainCont .cards max .cardCont {
     padding: 10px;
     flex-basis: 300px !important;
     width: 300px;
   }
-  body .app .categoryPage .cards max .cardCont a img {
+  body .app .categoryPage .mainCont .cards max .cardCont a img {
     width: 300px !important;
     height: 260px;
   }
-  body .app .categoryPage .cards max .cardCont .addButton {
+  body .app .categoryPage .mainCont .cards max .cardCont .addButton {
     top: 245px;
     right: 10px;
   }
-  body .app .categoryPage .cards max .cardCont .removeButton {
+  body .app .categoryPage .mainCont .cards max .cardCont .removeButton {
     top: 245px;
     right: 10px;
   }
-  body .app .categoryPage .cards max .cardCont .inStock {
+  body .app .categoryPage .mainCont .cards max .cardCont .inStock {
     font-size: 22px;
     top: 10px;
     width: 300px !important;
