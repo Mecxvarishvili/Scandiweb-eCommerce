@@ -33,7 +33,7 @@ class ProductPage extends Component {
     getProduct() {
         this.setState({isLoading: true})
             Api.fetchSingleProduct(this.props.match.params.id)
-                .then(data => this.setState({productData: data.data.product}))
+                .then(data => this.setState({productData: data}))
                 .then(this.setState({pathname: this.props.location.pathname}))
                 .finally(this.setState({isLoading: false}))
             

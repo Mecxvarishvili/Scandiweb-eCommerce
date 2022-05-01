@@ -1,23 +1,25 @@
-import { CATEGORY_QUERY, SINGLE_PRODUCT_QUERY } from "./querySerialize"
 
 const Api = {
-    baseApi: (query) => {
+    baseApi: (method, url) => {
         return (
-            fetch('http://localhost:4000/', {
-                method: "POST",
+            fetch(`https://vmfakeapi.herokuapp.com/sw/`+ url, {
+                method: method,
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({query: query})
             })
                 .then((res) => res.json())
         )
     },
 
     fetchSingleProduct: (id) => {
-        return Api.baseApi(SINGLE_PRODUCT_QUERY(id))
+        return Api.baseApi("GET", `/product/${id}`)
     },
 
     fetchCategoryProduct: (id) => {
-        return (Api.baseApi(CATEGORY_QUERY(id)))
+        if(id === ""){
+            return (Api.baseApi("GET", ""))
+        }else {
+            return(Api.baseApi("GET", `/category/${id}`))
+        }
     }
 
 }
