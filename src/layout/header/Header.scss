@@ -1,0 +1,357 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    width: 100%;
+    height: 80px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: white;
+
+    .inHeader {
+        background-color: white;
+    
+        .headerCont{
+            height: 80px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        
+            .categoryCont {
+                grid-column: span 1;
+                display: flex;
+                font-size: 16px;
+                font-weight: 400;
+                color: #1D1F22;
+                text-transform:uppercase;
+                height: 78px;
+
+                a { 
+                    text-decoration: none;
+                
+                    .category {
+                        padding: 0 17px;
+                        text-align: center;
+                        line-height: 80px;
+                        color: black;
+                    }
+                
+                    .categoryAfter {
+                        padding: 0 17px;
+                        font-weight: 600;
+                        line-height: 78px;
+                        color: #5ECE7B;
+                        border-bottom: 2px solid #5ECE7B;
+                    }
+                
+                }
+
+            }
+            .logoCont {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            
+                .logo {
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+        
+            .cont1 {
+                display: flex;
+                justify-content: flex-end;
+
+                .inCont1 {
+                    display: flex;
+                    align-items: center;
+            
+                    .currencyCont {
+                        margin: 0 10px;
+                    
+                        select {
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                        }
+                    }
+                
+                    button {
+                        border: none;
+                        background-color: white;
+                        cursor: pointer;
+                        position: relative;
+                        width: 45px;
+                        height: 45px;
+    
+                        div {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            width: 20px;
+                            height: 20px;
+                            line-height: 20px;
+                            background-color: black;
+                            color: white;
+                            font-size: 14px;
+                            font-weight: 600;
+                            border-radius: 50%;
+                        }
+                    }
+
+                }
+            }
+        
+            .showCartMenuCont {
+                position: fixed;
+                z-index: -1;
+                top: 0;
+                right: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(57, 55, 72, 0.22);
+                visibility: visible;
+                opacity: 1;
+
+                .cartCont {
+                    display: flex;
+                    justify-content: flex-end;
+
+                
+                    .showCart {
+                        position: relative;
+                        z-index: 3;
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                        width: 300px;
+                        max-height: 700px;
+                        background-color: white;
+                        padding: 10px 15px;
+
+                        .bagTitle {
+                            font-weight: 700;
+
+                            span {
+                            font-weight: 500;
+                            }
+                        }
+
+                        .addScroll {
+                            overflow: scroll;
+                            overflow-x: hidden, 
+                        }
+
+                        .bagCardCont {
+                            max-height: 400px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 30px;
+
+                            .bagCardBox {
+                                margin: 4px 0;
+                                display: flex;
+                                justify-content: space-between;
+
+                                .leftCont {
+                                    flex-basis: 130px;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: space-between;
+
+                                    .bagDescribe {
+
+                                        .bagName {
+                                            color: #1D1F22;
+                                            margin: 5px 0;
+                                            line-height: 15px;
+                                            font-weight: 500;
+
+                                        }
+
+                                        .bagCategory {
+                                            color: #1D1F22;
+                                            margin: 5px 0;
+                                            text-transform: capitalize;
+
+                                        }
+
+                                        .bagPrice {
+                                            color: #1D1F22;
+                                            margin: 10px 0;
+                                            font-weight: 500;
+                                        }
+                                    }
+
+                                    
+
+                                    .attributesCont {
+                                        display: flex;
+                                        flex-wrap: wrap;
+                                        gap: 3px;
+
+                                        .attributesBox {
+                                            display: flex;
+                                            gap: 10px;
+                                            align-items: center;
+
+                                            .attributeId {
+                                                font-size: 15px;
+                                                font-weight: 500;
+                                                
+
+                                            }
+
+                                            .attributeValue {
+                                                height: 23px;
+                                                line-height: 23px;
+                                                border: 1px solid black;
+                                                text-align: center;
+                                                font-weight: 500;
+                                                font-size: 14px;
+                                                padding: 0 4px;
+                                            }
+
+                                            .attributeColor {
+                                                min-width: 16px;
+                                                height: 16px;
+                                                border: 1px solid black;
+                                            }
+
+                                        }
+                                        
+                                    }
+                                }
+
+                                .rightCont {
+                                    flex-basis: 140px;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+
+                                    .qtyBox {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        flex-direction: column;
+                                        height: 100%;
+                    
+                                        .increment {
+                                            width: 24px;
+                                            height: 24px;
+                                            border: 1px solid black;
+                                            background-color: white;
+                                            font-size: 20px;   
+                                            cursor: pointer;
+                                        }
+                    
+                                        .quantity {
+                                            text-align: center;
+                                            font-size: 20px;  
+                                            font-weight: 500;                                         
+                                        }
+                    
+                                        .decrement {
+                                            width: 24px;
+                                            height: 24px;
+                                            border: 1px solid black;
+                                            background-color: white;
+                                            font-size: 20px;   
+                                            cursor: pointer;
+                                        }
+                    
+                                    }
+
+                                    .imgCont {
+                                        width: 105px;
+                                        height: 140px;
+
+                                        img {
+                                            width: 105px;
+                                            height: 140px;
+                                            object-fit: contain;
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+                        }
+
+                        .emptyBag {
+                            margin: 40px 0;
+                            text-align: center;
+                            font-size: 20px;
+
+                        }
+
+                        .totalCont {
+                            display: flex;
+                            justify-content: space-between;
+                            margin: 40px 0;
+
+                            .total {
+                                font-weight: 500;
+                            }
+
+                            .totalPrice {
+                                font-weight: 500;
+                            }
+                        }
+
+                        .buttonCont {
+                            display: flex;
+                            justify-content: space-between;
+
+                            a {
+
+                                .viewBag {
+                                    width: 140px;
+                                    height: 40px;
+                                    border: 1px solid #1D1F22;
+                                    font-size: 14px;
+                                    font-weight: 600;
+                                    text-transform: uppercase;
+                                    padding: 0;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .checkout {
+                                width: 140px;
+                                height: 40px;
+                                background-color: #5ECE7B;
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 600;
+                                border: 1px solid #5ECE7B;
+                                text-transform: uppercase;
+                                padding: 0;
+
+                            }
+                        }
+                    
+                    }
+                
+                    .dontShowCart {
+                        display: none;
+                    }
+                }
+            
+            }
+        
+            .dontShowCartMenuCont {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100vh;
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
+    }
+
+}

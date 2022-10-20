@@ -1,0 +1,229 @@
+.productPage {
+    display: flex;
+
+    .imgCont {
+        display: flex;
+        justify-content: space-between;
+
+        .imgsBox {
+            display: flex;
+            gap: 20px 0;
+            width: 80px;
+
+            img {
+                width: 80px;
+                height: 80px;
+                object-fit: contain;
+                cursor: pointer;
+            }
+        }
+    
+        .imgBox {
+
+            img {
+                object-fit: contain;
+
+            }
+        
+        }
+    }
+
+    .describeCont {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px 0;
+
+        .productTitle {
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .productCategory {
+            font-size: 30px;
+            text-transform: capitalize;
+        }
+
+        .sizeCont {
+
+            .size {
+                font-family: 'Poppins Medium', sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            div {
+                display: flex;
+                justify-content: space-between;
+                .sizeBox {
+                    display: flex;
+                
+                    input {
+                        display: none;
+                    }
+                
+                    input:checked + .label {
+                        background-color: black;
+                        color: white
+                    }
+                
+                    .label {
+                        width: 60px;
+                        height: 45px;
+                        line-height: 45px;
+                        text-align: center;
+                        border: 1px solid #1D1F22;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                        -webkit-touch-callout: none; 
+                          -webkit-user-select: none; 
+                           -khtml-user-select: none; 
+                             -moz-user-select: none; 
+                              -ms-user-select: none; 
+                                  user-select: none;
+                    }
+                }
+
+            }
+
+        }
+
+        .attributesCont {
+
+            .attributeTitle {
+                font-size: 18px;
+                font-weight: bold;
+                font-family: 'Poppins Medium', sans-serif;
+            }
+            .attributeBox {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+
+                .inputBox {
+                    display: flex;
+                    input {
+                        display: none;
+                    }
+                
+                    input:checked + .label {
+                        background-color: black;
+                        color: white
+                    }
+                
+                    .label {
+                        width: 60px;
+                        height: 45px;
+                        line-height: 45px;
+                        text-align: center;
+                        border: 1px solid #1D1F22;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                        -webkit-touch-callout: none; 
+                          -webkit-user-select: none; 
+                           -khtml-user-select: none; 
+                             -moz-user-select: none; 
+                              -ms-user-select: none; 
+                                  user-select: none;
+                    }
+                }
+
+                .colorBox {
+                    display: flex;
+                    input {
+                        display: none;
+                    }
+                
+                    .colorLabel {
+                        width: 36px;
+                        height: 36px;
+                        line-height: 45px;
+                        text-align: center;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                        border: 1px solid rgb(105, 105, 105);
+                        -webkit-touch-callout: none; 
+                          -webkit-user-select: none; 
+                           -khtml-user-select: none; 
+                             -moz-user-select: none; 
+                              -ms-user-select: none; 
+                                  user-select: none;
+
+                        .span {
+                            position: relative;
+                            font-size: 20px;
+                            font-weight: bold;
+                            left: -3px;
+                            top: -3px;
+                            display: none;
+                            width: 38px;
+                            height: 38px;
+                        }
+                    }
+                
+                    input:checked + .colorLabel {
+
+                        .span {
+                            display: block;
+                            border: 1px solid #5ECE7B;
+                        }
+                    }
+                    
+                }
+
+            }
+        }
+
+        .priceCont {
+
+            .priceTitle {
+                font-family: 'Poppins Medium', sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .price {
+                font-weight: 600;
+                font-size: 24px;
+                margin-top: 10px;
+
+            }
+
+        }
+        .addButton {
+            width: 100%;
+            height: 50px;
+            background: #5ECE7B;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .removeButton {
+            width: 100%;
+            height: 50px;
+            background: #e92200;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .productDescribe {
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .outOfStock {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #e92200;
+        }
+    }
+
+}
