@@ -1,9 +1,8 @@
-import { SET_CURRENCY, SET_PRODUCTS } from "./productsActionConst";
+import { SET_CURRENCY, SET_DATA_ENDPIONTS } from "./productsActionConst";
 
 const initialState = {
     currency: "0",
-    Products: [],
-    singleProduct: []
+    dataEndPoints: { currency: [], categories: []}
 }
 
 export default function productsReducer(state = initialState, action) {
@@ -14,12 +13,8 @@ export default function productsReducer(state = initialState, action) {
                 ...state,
                 currency:  action.payload
             }
-        case SET_PRODUCTS:
-            var data = [1]
-            return {
-                ...state,
-                Products: {...state.Products, data}
-            }
+        case SET_DATA_ENDPIONTS:
+            return { ...state, dataEndPoints: {...action.payload}}
         default:
             return state
     }

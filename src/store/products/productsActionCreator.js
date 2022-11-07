@@ -1,4 +1,4 @@
-import { SET_CURRENCY, SET_PRODUCTS } from "./productsActionConst"
+import { SET_CURRENCY, SET_DATA_ENDPIONTS } from "./productsActionConst"
 
 export const SetCurrency = (data) => {
     return {
@@ -7,9 +7,16 @@ export const SetCurrency = (data) => {
     }
 }
 
-export const setProductData = (params, data) => {
+export const setDataEndPoints = (data) => {
+    return {
+        type: SET_DATA_ENDPIONTS,
+        payload: data
+    }
+}
+
+/* export const setProductData = (params, data) => {
     return {
         type: SET_PRODUCTS,
         payload: {params, data},
     }
-}
+} */

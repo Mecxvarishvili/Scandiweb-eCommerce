@@ -7,10 +7,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { CART_PAGE, CATEGORY_PAGE, ALLPRODUCTS_PAGE, PRODUCT_PAGE } from './serialzie/routes';
 import CartPage from './pages/cartpage/CartPage';
 import { connect } from 'react-redux';
-import { SetCurrency } from './store/products/productsActionCreator';
+import { SetCurrency, setDataEndPoints } from './store/products/productsActionCreator';
 import { SetLocalStorageData } from './store/cart/cartActionCreator';
 import { getCartData } from './store/cart/cartSelector';
 import { memo } from 'react';
+import Api from './serialzie/api';
+import { serializeEndPoints } from './serialzie/serialize';
 
 const mapStateToProps = (props) => ({
   getCart: getCartData(props)
@@ -19,15 +21,19 @@ const mapStateToProps = (props) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
       setCurrency: (data) => dispatch(SetCurrency(data)),
-      setCartData: (data) => dispatch(SetLocalStorageData(data))
+      setCartData: (data) => dispatch(SetLocalStorageData(data)),
+      setDataEndPoint: (data) => dispatch(setDataEndPoints(data))
   }
 }
 
 class App extends Component {
 
   componentDidMount() {
+
+    Api.fetchCategoryProduct('')
+      .then(data => this.props.setDataEndPoint(serializeEndPoints(data.data.category.products)) /* serializeEndPoints(data.data.category.products) */)
     this.props.setCurrency(localStorage.getItem("Currency"))
-    if(localStorage.getItem("CartData") &&localStorage.getItem("CartData").length) {
+    if(localStorage.getItem("CartData") && localStorage.getItem("CartData").length) {
       this.props.setCartData(JSON.parse(localStorage.getItem("CartData")))
     }
     

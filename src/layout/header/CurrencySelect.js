@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SetCurrency } from '../../store/products/productsActionCreator';
+import { getCurrencyEndPoints } from '../../store/products/productsSelector';
+
+const mapStateToProps = (props) => ({
+    getCur: getCurrencyEndPoints(props)
+})
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -9,8 +14,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class CurrencySelect extends Component {
-
-    
     selectCurrency = (e) => {
         this.props.setCur(e.target.value)
     }
@@ -18,16 +21,14 @@ class CurrencySelect extends Component {
     render() {
         return (
             <div className="currencyCont" >
-                <select defaultValue={localStorage.getItem("Currency")} onChange={(e) => this.selectCurrency(e)} >
-                    <option value="0" >$ USD</option>
-                    <option value="1" >£ GBP</option>
-                    <option value="2" >$ AUD</option>
-                    <option value="3" >¥ JPY</option>
-                    <option value="4" >₽ RUB</option>
-                </select>
+                {!!this.props.getCur.length && <select defaultValue={localStorage.getItem("Currency")} onChange={(e) => this.selectCurrency(e)} >
+                    {this.props.getCur && this.props.getCur.map(el => (
+                        <option key={el.label} value={el.symbol} >{el.symbol} {el.label}</option>
+                    ))}
+                </select>}
             </div>
         );
     }
 }
 
-export default connect(null, mapDispatchToProps)(CurrencySelect);
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencySelect);

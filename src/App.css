@@ -309,6 +309,7 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   height: 30px;
   font-size: 19px;
   border: none;
+  text-transform: capitalize;
 }
 .categoryPage .mainCont .filterCont .categorySelect .select option {
   padding: 0;
@@ -479,12 +480,10 @@ header .inHeader .headerCont .dontShowCartMenuCont {
 }
 .productPage .imgCont {
   display: flex;
-  justify-content: space-between;
 }
 .productPage .imgCont .imgsBox {
   display: flex;
-  gap: 20px 0;
-  width: 80px;
+  gap: 20px;
 }
 .productPage .imgCont .imgsBox img {
   width: 80px;
@@ -873,10 +872,26 @@ header .inHeader .headerCont .dontShowCartMenuCont {
     gap: 0 100px;
   }
   body .app .productPage .imgCont {
-    width: 730px;
+    max-width: 730px;
+    gap: 20px;
+  }
+  body .app .productPage .imgCont ::-webkit-scrollbar {
+    width: 5px;
+  }
+  body .app .productPage .imgCont ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  body .app .productPage .imgCont ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  body .app .productPage .imgCont ::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
   body .app .productPage .imgCont .imgsBox {
     flex-direction: column;
+    max-height: 510px;
+    overflow-x: hidden;
+    max-width: 83px;
   }
   body .app .productPage .imgCont .imgBox {
     width: 610px;
@@ -946,7 +961,10 @@ header .inHeader .headerCont .dontShowCartMenuCont {
     margin-top: 160px;
   }
   body .app .productPage .imgCont {
-    width: 600px;
+    max-width: 600px;
+  }
+  body .app .productPage .imgCont .imgsBox {
+    max-height: 430px;
   }
   body .app .productPage .imgCont .imgBox {
     width: 500px;
@@ -1037,8 +1055,8 @@ header .inHeader .headerCont .dontShowCartMenuCont {
     margin-top: 160px;
     gap: 0 40px;
   }
-  body .app .productPage .imgCont {
-    width: 500px;
+  body .app .productPage .imgCont .imgsBox {
+    max-height: 350px;
   }
   body .app .productPage .imgCont .imgBox {
     width: 400px;
@@ -1102,6 +1120,10 @@ header .inHeader .headerCont .dontShowCartMenuCont {
   body .app .headerCont {
     max-width: 420px !important;
   }
+  body .app .headerCont .cartCont {
+    width: 420px;
+    margin: 80px auto;
+  }
   body .app .categoryPage {
     margin-top: 130px;
     margin-bottom: 50px;
@@ -1146,17 +1168,25 @@ header .inHeader .headerCont .dontShowCartMenuCont {
     gap: 0 40px;
   }
   body .app .productPage .imgCont {
-    width: 420px;
+    max-width: 420px;
     flex-direction: column;
+  }
+  body .app .productPage .imgCont ::-webkit-scrollbar {
+    height: 5px;
   }
   body .app .productPage .imgCont .imgsBox {
     flex-direction: row;
+    max-width: 400px;
+    overflow-x: auto;
+  }
+  body .app .productPage .imgCont .imgsBox .imgs {
+    width: 80px;
   }
   body .app .productPage .imgCont .imgBox {
-    width: 400px;
+    max-width: 400px;
   }
   body .app .productPage .imgCont .imgBox img {
-    width: 400px;
+    max-width: 400px;
     height: 350px;
   }
 }

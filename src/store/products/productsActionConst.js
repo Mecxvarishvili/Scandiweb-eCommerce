@@ -1,2 +1,3 @@
 export const SET_CURRENCY = "SET_CURRENCY"
-export const SET_PRODUCTS = "SET_PRODUCTS"
+export const SET_DATA_ENDPIONTS = "SET_DATA_ENDPIONTS"
+// export const SET_PRODUCTS = "SET_PRODUCTS"

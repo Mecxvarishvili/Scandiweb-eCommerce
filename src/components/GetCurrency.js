@@ -3,55 +3,38 @@ import { connect } from 'react-redux';
 import { getProductsCurrency } from '../store/products/productsSelector';
 
 const mapStateToProps = (props) => ({
-    getCurrency: Number(getProductsCurrency(props)),
+    getCurrency: getProductsCurrency(props),
  });
 
 class GetCurrency extends Component {
     constructor() {
         super()
-
         this.state = {
-            currency: 0,
+            price: 0,
+            currency: ""
         }
     }
     componentDidMount() {
-        this.setState({currency: this.props.getCurrency})
+        this.getPrice()
     }
 
     componentDidUpdate() {
         if(this.state.currency !== this.props.getCurrency) {
-            this.setState({currency: this.props.getCurrency})
+            this.getPrice()
         }
     }
 
-    getSymbol(currency) {
-        switch(currency) {
-            case 0:
-                return "$"
-            case 1:
-                return "£"
-            case 2:
-                return "$"
-            case 3:
-                return "¥"
-            case 4:
-                return "₽"
-            default: 
-                return ""
+    getPrice() {
+        if(this.props.prices && this.props.getCurrency) {
+            const price = this.props.prices.find(price => price.currency.symbol === this.props.getCurrency)
+            this.setState({currency: this.props.getCurrency, price: price.amount})
         }
     }
 
     render() {
-        if(!!this.props.prices) {
-            return (
-                <div className="price">{this.props.prices[this.state.currency].amount}{this.props.prices[this.state.currency].currency.symbol}</div>
-            )
-        } else {
-             return (
-                this.getSymbol(this.state.currency)
-            );
-
-        } 
+        return (
+            <div className="price">{this.state.price.toFixed(2)}{this.state.currency}</div>
+        )
     }
 }
 

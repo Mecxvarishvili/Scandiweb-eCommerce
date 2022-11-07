@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import logo from "../../images/logo.png"
 import cart from "../../images/Cart.png"
 import { Link } from 'react-router-dom';
-import { ALLPRODUCTS_PAGE, CART_PAGE, CATEGORY_PAGE } from '../../serialzie/routes';
+import { CART_PAGE, CATEGORY_PAGE } from '../../serialzie/routes';
 import { connect } from 'react-redux';
 import { getCartData } from '../../store/cart/cartSelector';
 import { getProductsCurrency } from '../../store/products/productsSelector';
 import { withRouter } from 'react-router';
-import GetCurrency from '../../components/GetCurrency';
 import BagCard from './BagCard';
 import TotalAmount from '../../components/TotalAmount';
 import CurrencySelect from './CurrencySelect';
@@ -84,10 +83,7 @@ class Header extends Component {
                                     </Link>
                         </div>
                         <div className="logoCont">
-                            
-                        <Link to={ALLPRODUCTS_PAGE}>
                             <img className="logo" src={logo} alt="logo" />
-                            </Link>
                         </div>
                         <div className="cont1" >
                             <div className="inCont1" onClick={(e) => e.stopPropagation()}>
@@ -107,8 +103,6 @@ class Header extends Component {
                                         <div className="total" >Total</div>
                                         <div className="totalPrice" >
                                             <TotalAmount />
-                                            &nbsp;
-                                            <GetCurrency prices={false} /> 
                                         </div>
                                     </div>
                                     <div className="buttonCont" >

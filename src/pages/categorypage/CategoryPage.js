@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
-import { ALLPRODUCTS_PAGE } from '../../serialzie/routes';
 import CardProduct from "./CardProduct"
 import Api from '../../serialzie/api';
 import Loader from '../../components/Loader';
-import { CATEGORY_PAGE } from '../../serialzie/routes';
+import { CATEGORY_PAGE, ALLPRODUCTS_PAGE  } from '../../serialzie/routes';
 import ProductsFilter from './ProductsFilter';
 import { serializeFilteredProducts, serializeFilterParams } from '../../serialzie/serialize';
+import { connect } from 'react-redux';
+import { getCategoriesEndPoints } from '../../store/products/productsSelector';
+
+const mapStateToProps = (props) => ({
+    getCategoriesEndPoint: getCategoriesEndPoints(props)
+})
 
 class CategoryPage extends Component {
     constructor() {
@@ -79,7 +84,7 @@ class CategoryPage extends Component {
     render() {
         return (
             <div className="categoryPage" >
-                <div className="categoryname">{this.props.location.pathname === "/" ? "all  product" : this.props.match.params.id}</div>
+                <div className="categoryname">{this.props.location.pathname === "/" ? "Products" : this.props.match.params.id}</div>
                 <div className='mainCont' >
                     <div className="filterCont">
                         <div className="filterTop" >
@@ -93,16 +98,13 @@ class CategoryPage extends Component {
                         <div className={this.state.openBar} >
                             <div className="categorySelect">
                                 <select className='select' onChange={(e) => this.handleChange(e)} value={this.state.category} >
-                                    <option value="/"  >All Products</option>
-                                    <option value="tech"  >Tech</option>
-                                    <option value="clothes"  >Clothes</option>
+                                    <option style={{display: "none"}} >Select Category</option>
+                                    {this.props.getCategoriesEndPoint && this.props.getCategoriesEndPoint.map(c => (
+                                        <option key={c} value={c}>{c}</option>
+                                    ))}
                                 </select>
                             </div>
-                            {this.props.location.pathname === "/"  ? 
-                            <div className="notSelected" >Select Category to Filter </div>
-                            :
-                            <ProductsFilter attr={""} />
-                            
+                            {this.props.location.pathname !== ALLPRODUCTS_PAGE  && <ProductsFilter />
                             }
                         </div>
                     </div>
@@ -127,4 +129,4 @@ class CategoryPage extends Component {
     }
 }
 
-export default withRouter(CategoryPage);
+export default connect(mapStateToProps)(withRouter(CategoryPage));

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import CartButton from '../../components/CartButton';
@@ -35,4 +35,4 @@ class CardProduct extends Component {
     }
 }
 
-export default (withRouter(CardProduct));
+export default memo(withRouter(CardProduct));

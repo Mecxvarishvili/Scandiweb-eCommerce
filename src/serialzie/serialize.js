@@ -32,7 +32,6 @@ export const serializeFilteredProducts = (data, filter) => {
         filter.forEach(filt => {
             newData = [...newData, ...data.filter(filterData => {
                 if (!!filterData.attributes.length && !newData.find(same => {return same.id === filterData.id})) {
-    
                      return filterData.attributes.find(attr => {
                         return attr.id === filt.id && attr.items.find(item => {return item.value === filt.value || item.id.replace("512GB", "512G").replace("256GB", "256G") === filt.value})
                     })
@@ -45,4 +44,30 @@ export const serializeFilteredProducts = (data, filter) => {
     } else {
         return data
     }
+}
+
+
+export const serializeEndPoints = (products) => {
+    const getCurrency = (data) => {
+        return data.map(el => el.currency)
+    }
+    const getCategories = (data) => {
+        const categories = data.map(el => el.category)
+        return categories.filter((item, index) => categories.indexOf(item) === index)
+    }
+    const getAttributes = (data) => {
+        const allAttributes = data.map(data => data)
+        console.log(data)
+        
+    }
+
+    const getEndPoints = () => {
+        return {
+            currency:  getCurrency(products[0].prices),
+            categories:  getCategories(products),
+            attributes: getAttributes(products)
+        }
+    }
+
+    return getEndPoints()
 }

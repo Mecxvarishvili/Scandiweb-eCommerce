@@ -1,30 +1,26 @@
 import React, { Component } from 'react';
-import { serializeAttributes } from '../../serialzie/serialize';
 
 class ProductAttributes extends Component {
 
-    componentDidUpdate(prevProps, prevState) {
+    /* componentDidUpdate(prevProps, prevState) {
         if(prevProps.data !== this.props.data) {
-            this.props.setAtt(serializeAttributes(this.props.data.attributes))
+            this.props.setAtt(serializeAttributes(this.props.attribute))
         }
         
-    }
+    } */
     
     render() {
         return (
-            !!this.props.data.attributes
-            ?
-            this.props.data.attributes.map((el) => {
-                return (
-                    el.id === "Color"
+            !!this.props.attribute ? 
+                    this.props.attribute.id === "Color"
                     ?
-                    <div className="attributesCont" key={el.id}>
-                        <div className="attributeTitle">{el.id}:</div>
+                    <div className="attributesCont" key={this.props.attribute.id}>
+                        <div className="attributeTitle">{this.props.attribute.id}:</div>
                         <div className="attributeBox" >
-                        {el.items.map((item) => {
+                        {this.props.attribute.items.map((item) => {
                             return (
                                 <div className="colorBox" key={item.value}>
-                                    <input className="colorInput" type="radio" id={item.value} name={this.props.data.id+"color"}  value={item.value}  onClick={(e) => this.props.setAtt({id: el.id, value: e.target.value})} defaultChecked />
+                                    <input className="colorInput" type="radio" id={item.value} name={this.props.attribute.id+"color"}  value={item.value}  onClick={(e) => this.props.setAtt({id: this.props.attribute.id, value: e.target.value})} defaultChecked />
                                     <label className="colorLabel"  style={{backgroundColor: item.value}} htmlFor={item.value}><span className="span" ></span></label>
                                 </div>
                             )
@@ -32,23 +28,20 @@ class ProductAttributes extends Component {
                         </div>
                     </div>
                     :
-                    <div className="attributesCont" key={el.id} >
-                        <div className="attributeTitle">{el.id}:</div>
+                    <div className="attributesCont" key={this.props.attribute.id} >
+                        <div className="attributeTitle">{this.props.attribute.id}:</div>
                         <div className="attributeBox">
-                        {el.items.map((item) => {
+                        {this.props.attribute.items.map((item) => {
                             return (
                                 <div className="inputBox" key={item.value}>
-                                    <input className="input" type="radio" id={el.id + item.value} name={el.id}  value={item.value}   onClick={(e) => this.props.setAtt({id: el.id, value: e.target.value})} defaultChecked />
-                                    <label className="label" htmlFor={el.id + item.value}>{item.value}</label>
+                                    <input className="input" type="radio" id={this.props.attribute.id + item.value} name={this.props.attribute.id}  value={item.value}   onClick={(e) => this.props.setAtt({id: this.props.attribute.id, value: e.target.value})} defaultChecked />
+                                    <label className="label" htmlFor={this.props.attribute.id + item.value}>{item.value}</label>
                                 </div>
                             )
                         })}
                         </div>
                     </div>
-                )
-            })
-            :
-            <></>
+                : <></>
         );
     }
 }

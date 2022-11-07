@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import { DeleteCart, SetCart } from '../store/cart/cartActionCreator';
-import { getCartData } from '../store/cart/cartSelector';
+import { SetCart } from '../store/cart/cartActionCreator';
 import { connect } from 'react-redux';
 import cart from "../images/WhiteCart.png"
-
-const mapStateToProps = (props) => ({
-    getCartData: getCartData(props),
- });
 
 const mapDispatchToProps = (dispatch) => {
     return {
         setCartData: (data, attr) => dispatch(SetCart(data, attr)),
-        deleteCartData: (data) => dispatch(DeleteCart(data)),
     }
 }
 
@@ -24,4 +18,4 @@ class CartButton extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartButton);
+export default connect(null, mapDispatchToProps)(CartButton);

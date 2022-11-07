@@ -116,10 +116,30 @@
                 gap: 0 100px;
 
                 .imgCont {
-                    width: 730px;
+                    max-width: 730px;
+                    gap: 20px;
+
+                    ::-webkit-scrollbar {
+                        width: 5px;
+                    }
+
+                    ::-webkit-scrollbar-track {
+                      background: #f1f1f1;
+                    }
+                    
+                    ::-webkit-scrollbar-thumb {
+                      background: #888;
+                    }
+                    
+                    ::-webkit-scrollbar-thumb:hover {
+                      background: #555;
+                    }
 
                     .imgsBox {
                         flex-direction: column;
+                        max-height: 510px;
+                        overflow-x: hidden;
+                        max-width: 83px;
                     }
 
                     .imgBox {
@@ -223,7 +243,11 @@
                 margin-top: 160px;
 
                 .imgCont {
-                    width: 600px;
+                    max-width: 600px;
+
+                    .imgsBox {
+                        max-height: 430px;
+                    }
 
                     .imgBox {
                         width: 500px;
@@ -350,7 +374,10 @@
                 gap: 0 40px;
 
                 .imgCont {
-                    width: 500px;
+
+                    .imgsBox {
+                        max-height: 350px;
+                    }
 
                     .imgBox {
                         width: 400px;
@@ -454,6 +481,11 @@
 
             .headerCont {
                 max-width: 420px !important;
+
+                .cartCont {
+                    width: 420px;
+                    margin: 80px auto;
+                }
             }
 
             .categoryPage {
@@ -521,18 +553,27 @@
                 gap: 0 40px;
 
                 .imgCont {
-                    width: 420px;
+                    max-width: 420px;
                     flex-direction: column;
-
+                    ::-webkit-scrollbar {
+                        height: 5px;
+                      }
+                    
                     .imgsBox {
                         flex-direction: row;
+                        max-width: 400px;
+                        overflow-x: auto;
+
+                        .imgs {
+                            width: 80px;
+                        }
                     }
 
                     .imgBox {
-                        width: 400px;
+                        max-width: 400px;
 
                         img {
-                            width: 400px;
+                            max-width: 400px;
                             height: 350px;
 
                         }

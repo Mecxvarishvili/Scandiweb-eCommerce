@@ -3,12 +3,10 @@
 
     .imgCont {
         display: flex;
-        justify-content: space-between;
 
         .imgsBox {
             display: flex;
-            gap: 20px 0;
-            width: 80px;
+            gap: 20px;
 
             img {
                 width: 80px;

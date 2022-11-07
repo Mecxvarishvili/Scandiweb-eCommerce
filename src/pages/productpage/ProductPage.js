@@ -8,6 +8,7 @@ import parse from "html-react-parser"
 import GetCurrency from '../../components/GetCurrency';
 import ProductAttributes from "./ProductAttributes"
 import Api from '../../serialzie/api';
+import { serializeAttributes } from '../../serialzie/serialize';
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -19,7 +20,6 @@ const mapDispatchToProps = (dispatch) => {
 class ProductPage extends Component {
     constructor() {
         super()
-        
         this.state = {
             isLoading: true,
             productData: [],
@@ -33,7 +33,7 @@ class ProductPage extends Component {
     getProduct() {
         this.setState({isLoading: true})
             Api.fetchSingleProduct(this.props.match.params.id)
-                .then(data => this.setState({productData: data.data.product, isLoading: false}))
+                .then(data => this.setState({productData: data.data.product, isLoading: false, attributes: serializeAttributes(data.data.product.attributes)}))
                 .then(this.setState({pathname: this.props.location.pathname}))
             
     }
@@ -50,14 +50,9 @@ class ProductPage extends Component {
     }
 
     setAttributes(data) {
-        if(!this.state.attributes.length || !this.state.pathname === this.props.location.pathname) {
-            this.setState({attributes: [...data]})
-        } else {
             var addData = [...this.state.attributes]
             addData.find(el => el.id === data.id).value = data.value
             this.setState({attributes: [...addData]})
-        }
-        
     }
 
     render() {
@@ -81,7 +76,9 @@ class ProductPage extends Component {
                             <div className="productTitle" >{this.state.productData.name}</div>
                             <div className="productCategory" >{this.state.productData.category}</div>
                         </div>
-                        <ProductAttributes data={this.state.productData} setAtt={(attr) => this.setAttributes(attr)} />
+                        {this.state.productData.attributes && this.state.productData.attributes.map((data) => (
+                            <ProductAttributes key={data.id} attribute={data} setAtt={(attr) => this.setAttributes(attr)} />
+                        ))}
                         <div className="priceCont" >
                             <div className="priceTitle" >PRICE:</div>
                             <GetCurrency prices={this.state.productData.prices}/>

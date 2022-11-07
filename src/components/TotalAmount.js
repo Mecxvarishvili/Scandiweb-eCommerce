@@ -11,9 +11,8 @@ const mapStateToProps = (props) => ({
 class TotalAmount extends Component {
     constructor() {
         super()
-
         this.state = {
-            currency: "",
+            currency: "$",
         }
     }
     componentDidMount() {
@@ -27,16 +26,21 @@ class TotalAmount extends Component {
     }
 
     render() {
-        const amountArray = this.props.getCartData.map(el => {
-            return {prices: el.prices[this.state.currency], qty: el.qty }
-        })
     
         var amount = 0
     
-        for (var i = 0; i < amountArray.length; i++){
-            amount +=amountArray[i].prices.amount * amountArray[i].qty
+        if(this.props.getCurrency && this.props.getCartData) {
+            const amountArray = this.props.getCartData.map(el => {
+                return {price: el.prices.find(price => price.currency.symbol === this.props.getCurrency), qty: el.qty }
+            })
+        
+            if(!!amountArray.length) {
+                for(var i = 0; i < amountArray.length; i++){
+                    amount += amountArray[i].price.amount * amountArray[i].qty
+                }
+            }
         }
-        return (amount.toFixed(2))
+        return (<>{amount.toFixed(2)} {this.props.getCurrency}</>)
     }
 }
 
