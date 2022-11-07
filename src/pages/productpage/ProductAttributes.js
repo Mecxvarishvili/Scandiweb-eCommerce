@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 
 class ProductAttributes extends Component {
-
-    /* componentDidUpdate(prevProps, prevState) {
-        if(prevProps.data !== this.props.data) {
-            this.props.setAtt(serializeAttributes(this.props.attribute))
-        }
-        
-    } */
     
     render() {
         return (

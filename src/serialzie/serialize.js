@@ -55,17 +55,11 @@ export const serializeEndPoints = (products) => {
         const categories = data.map(el => el.category)
         return categories.filter((item, index) => categories.indexOf(item) === index)
     }
-    const getAttributes = (data) => {
-        const allAttributes = data.map(data => data)
-        console.log(data)
-        
-    }
 
     const getEndPoints = () => {
         return {
             currency:  getCurrency(products[0].prices),
             categories:  getCategories(products),
-            attributes: getAttributes(products)
         }
     }
 

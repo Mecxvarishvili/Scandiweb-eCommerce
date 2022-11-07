@@ -13,10 +13,3 @@ export const setDataEndPoints = (data) => {
         payload: data
     }
 }
-
-/* export const setProductData = (params, data) => {
-    return {
-        type: SET_PRODUCTS,
-        payload: {params, data},
-    }
-} */

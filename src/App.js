@@ -31,7 +31,7 @@ class App extends Component {
   componentDidMount() {
 
     Api.fetchCategoryProduct('')
-      .then(data => this.props.setDataEndPoint(serializeEndPoints(data.data.category.products)) /* serializeEndPoints(data.data.category.products) */)
+      .then(data => this.props.setDataEndPoint(serializeEndPoints(data.data.category.products)))
     this.props.setCurrency(localStorage.getItem("Currency"))
     if(localStorage.getItem("CartData") && localStorage.getItem("CartData").length) {
       this.props.setCartData(JSON.parse(localStorage.getItem("CartData")))
