@@ -1,23 +1,21 @@
-import { CATEGORY_QUERY, SINGLE_PRODUCT_QUERY } from "./querySerialize"
-
 const Api = {
-    baseApi: (query) => {
+    baseApi: (url) => {
         return (
-            fetch('http://localhost:4000/', {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({query: query})
-            })
+            fetch(`https://vmfakeapi.onrender.com/sw/${url}`)
                 .then((res) => res.json())
         )
     },
 
     fetchSingleProduct: (id) => {
-        return Api.baseApi(SINGLE_PRODUCT_QUERY(id))
+        return Api.baseApi(`product/${id}`)
     },
 
     fetchCategoryProduct: (id) => {
-        return (Api.baseApi(CATEGORY_QUERY(id)))
+        if(id === "") {
+            return Api.baseApi("")
+        } else {
+            return Api.baseApi(`category/${id}`)
+        }
     }
 
 }
