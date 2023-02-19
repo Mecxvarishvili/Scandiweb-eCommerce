@@ -788,6 +788,9 @@ header .inHeader .headerCont .dontShowCartMenuCont {
 }
 
 @media only screen and (max-width: 12000px) {
+  body select {
+    background-color: white;
+  }
   body div .app {
     margin: 0 auto;
   }

@@ -14,6 +14,14 @@ class GetCurrency extends Component {
             currency: ""
         }
     }
+
+    getPrice() {
+        if(this.props.prices && this.props.getCurrency) {
+            const price = this.props.prices.find(price => price.currency.symbol === this.props.getCurrency)
+            this.setState({currency: this.props.getCurrency, price: price.amount})
+        }
+    }
+    
     componentDidMount() {
         this.getPrice()
     }
@@ -21,13 +29,6 @@ class GetCurrency extends Component {
     componentDidUpdate() {
         if(this.state.currency !== this.props.getCurrency) {
             this.getPrice()
-        }
-    }
-
-    getPrice() {
-        if(this.props.prices && this.props.getCurrency) {
-            const price = this.props.prices.find(price => price.currency.symbol === this.props.getCurrency)
-            this.setState({currency: this.props.getCurrency, price: price.amount})
         }
     }
 

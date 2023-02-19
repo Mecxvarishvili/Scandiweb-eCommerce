@@ -1,7 +1,7 @@
 import { SET_CURRENCY, SET_DATA_ENDPIONTS } from "./productsActionConst";
 
 const initialState = {
-    currency: "0",
+    currency: "$",
     dataEndPoints: { currency: [], categories: []}
 }
 

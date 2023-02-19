@@ -6,6 +6,9 @@
 
 @media only screen and (max-width: 12000px) {
     body {
+        select {
+            background-color: white;
+        }
         div {
             .app {
                 margin: 0 auto;
