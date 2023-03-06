@@ -31,7 +31,7 @@ class App extends Component {
   componentDidMount() {
 
     Api.fetchCategoryProduct('')
-      .then(data => this.props.setDataEndPoint(serializeEndPoints(data.data.category.products)))
+      .then(data => this.props.setDataEndPoint(serializeEndPoints(data)))
       if(localStorage.getItem("Currency")) {
         this.props.setCurrency(localStorage.getItem("Currency"))
       }

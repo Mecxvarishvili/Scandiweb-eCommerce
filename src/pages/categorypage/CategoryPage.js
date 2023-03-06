@@ -30,7 +30,7 @@ class CategoryPage extends Component {
     getProducts() {
             this.setState({isLoading: true})
             Api.fetchCategoryProduct(this.props.location.pathname === ALLPRODUCTS_PAGE ? "" : this.props.match.params.id)
-                .then(data => this.setState({data: serializeFilteredProducts(data.data.category.products, this.state.filterParams), isLoading: false}))
+                .then(data => this.setState({data: serializeFilteredProducts(data, this.state.filterParams), isLoading: false}))
                 .then(this.setState({
                     pathname: this.props.location.pathname,
                     filterParams: serializeFilterParams((new URL(document.location)).searchParams),
